@@ -16,7 +16,11 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::group(['middleware' => ['auth']], function () { 
+	Route::get('profile', 'ProfileController@index');
+	Route::patch('profile/{id}', 'ProfileController@update');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('profile', 'ProfileController@index');
-Route::patch('profile/{id}', 'ProfileController@update');
+Route::get('/get-quote', 'QuoteController@index');
+Route::post('get-quote/add', 'QuoteController@add');
