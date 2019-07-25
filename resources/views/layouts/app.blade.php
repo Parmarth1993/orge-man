@@ -48,6 +48,11 @@
                         @else
                             @if (Auth::user()->role == 'admin')
                             <li>
+                                <a href="{{ url('/admin/franchises') }}">
+                                Franchise
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ url('/admin/quotes') }}">
                                 Quotes
                                 </a>
@@ -55,7 +60,7 @@
                             @endif
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    Hi, {{ Auth::user()->first_name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
