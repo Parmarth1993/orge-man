@@ -21,7 +21,6 @@ class ProfileController extends Controller
          * fetching the user model
          **/
         $user = Auth::user();
-        //var_dump($user);
 
         /**
          * Passing the user data to profile view

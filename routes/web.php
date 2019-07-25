@@ -16,9 +16,20 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::group(['middleware' => ['auth']], function () { 
+/*
+* General Routes
+*/
+Route::group(['middleware' => ['auth']], function () { 	
 	Route::get('profile', 'ProfileController@index');
 	Route::patch('profile/{id}', 'ProfileController@update');
+});
+
+/*
+* Admin Routes
+*/
+Route::group(array('prefix'=> 'admin', 'middleware' => ['auth']), function () {
+	Route::get('dashboard', 'admin\DashboardController@index');
+	Route::get('quotes', 'admin\QuotesController@list');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
