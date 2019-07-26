@@ -7,15 +7,15 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class FranchisesController extends Controller
+class SalesController extends Controller
 {
     
 	public function list() {
-        $franchises = User::Where('role', 'franchises')->get();
+        $sales = User::Where('role', 'sales')->get();
         /**
          * Passing the user data to profile view
          */
-        return view('admin/franchises', compact('franchises'));
+        return view('admin/sales', compact('sales'));
 
     }
 
@@ -42,14 +42,14 @@ class FranchisesController extends Controller
 	              $filename = $file->getClientOriginalName();
 
 			      //Move Uploaded File
-			      $destinationPath = 'uploads/franchise';
+			      $destinationPath = 'uploads/sales';
 			      $file->move($destinationPath,$file->getClientOriginalName());
               }else{
               	$filename = '';
               }
 
 	        $input = $request->only('first_name', 'last_name', 'email', 'user_name', 'password', 'phone_number','address', 'logo');
-	        $franchises = User::create([
+	        $sales = User::create([
 	            'first_name' => $input['first_name'],
 	            'last_name' => $input['last_name'],
 	            'user_name' => $input['user_name'],
@@ -57,17 +57,17 @@ class FranchisesController extends Controller
 	            'password' => bcrypt($input['password']),
 	            'phone_number' => $input['phone_number'],
 	            'address' => $input['address'],
-	            'role' => 'franchises',
+	            'role' => 'sales',
 	            'logo' => $filename,
 	        ]);
 
-	        if($franchises->save())
-	        	return redirect('/admin/franchises')->with('success', 'Franchises has been added successfully.');
+	        if($sales->save())
+	        	return redirect('/admin/sales')->with('success', 'Sales has been added successfully.');
 	        else 
-	        	return redirect('/admin/add-franchises')->with('error', 'Error saving Franchises.');
+	        	return redirect('/admin/add-sales')->with('error', 'Error saving sales.');
 	    } else {
 	    	$password = rand();
-        	return view('admin/add-franchises', compact('password'));
+        	return view('admin/add-sales', compact('password'));
 	    }
 
     }
@@ -104,19 +104,19 @@ class FranchisesController extends Controller
 	        
 	        
 	        if(User::Where('id', $id)->update($input))
-	        	return redirect('/admin/franchises')->with('success', 'Franchises has been updated successfully.');
+	        	return redirect('/admin/sales')->with('success', 'Sales has been updated successfully.');
 	        else 
-	        	return redirect('/admin/franchises/edit/' . $id)->with('error', 'Error updating data.');
+	        	return redirect('/admin/sales/edit/' . $id)->with('error', 'Error updating data.');
 	    } else {
-	    	$franchises = User::Where('id', $id)->first();
-	    	return view('admin/edit-franchises', compact('franchises'));
+	    	$sales = User::Where('id', $id)->first();
+	    	return view('admin/edit-sales', compact('sales'));
 	    }
 
     }
 
     public function delete(Request $request) {
         $id = $request['id'];
-        $franchises = User::Where('id', $id)->delete();
-        return redirect('/admin/franchises')->with('success', 'Franchises has been deleted successfully.');
+        $sales = User::Where('id', $id)->delete();
+        return redirect('/admin/sales')->with('success', 'Sales has been deleted successfully.');
     }
 }

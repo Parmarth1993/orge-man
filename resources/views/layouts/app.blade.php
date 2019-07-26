@@ -57,7 +57,26 @@
                                 Quotes
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ url('/admin/sales') }}">
+                                Sales
+                                </a>
+                            </li>
                             @endif
+
+                            @if (Auth::user()->role == 'sales')
+                                <li>
+                                    <a href="{{ url('/sales/leads/assigned') }}">
+                                    Assigned Leads
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/sales/leads/unassigned') }}">
+                                    Unassigned Leads
+                                    </a>
+                                </li>
+                            @endif
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     Hi, {{ Auth::user()->first_name }} <span class="caret"></span>
