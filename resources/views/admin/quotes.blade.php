@@ -6,7 +6,11 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Admin Dashboard</div>
-
+                 @if(session()->get('success'))
+                    <div class="alert alert-success">
+                      {{ session()->get('success') }}  
+                    </div><br />
+                @endif
                 @if (session('status'))
                     <div class="panel-body">
                         <div class="alert alert-success">
@@ -40,7 +44,7 @@
                                     <a href="javascript:void(0);" class="btn btn-default btn-sm">
                                         <i class="glyphicon glyphicon-pencil"></i>
                                     </a>
-                                    <a href="javascript:void(0);" class="btn btn-default btn-sm">
+                                    <a onclick="return confirm('Are you sure?')" href="{{ url('/admin/quotes/delete/'. $quote->id ) }}"  class="btn btn-default btn-sm">
                                         <i class="glyphicon glyphicon-trash"></i>
                                     </a>
                                 </td>

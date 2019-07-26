@@ -23,4 +23,10 @@ class QuotesController extends Controller
         return view('admin/quotes', compact('user', 'quotes'));
 
     }
+
+    public function delete(Request $request) {
+        $id = $request['id'];
+        $quotes = Quote::Where('id', $id)->delete();
+        return redirect('/admin/quotes')->with('success', 'Quote has been deleted successfully.');
+    }
 }

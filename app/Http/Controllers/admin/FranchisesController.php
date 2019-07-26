@@ -23,14 +23,30 @@ class FranchisesController extends Controller
         
         if ($request->isMethod('post')) {
 
-        	// $request->validate([
-	        //     'first_name' => 'required',
-	        //     'last_name' => 'required',
-	        //     'user_name' => 'required',
-	        //     'email' => 'required',
-	        //     'address' => 'required',
-	        //     'phone_number' => 'required',
-	        // ]);	        
+
+
+        	$request->validate([
+	            'first_name' => 'required',
+	            'last_name' => 'required',
+	            'user_name' => 'required|string|max:255|unique:users',
+	            'email' => 'required|string|email|max:255|unique:users',
+	            'address' => 'required',
+	            'phone_number' => 'required',
+	        ]);	  
+
+        	  // File upload		
+              $file = $request->file('logo');
+
+              if(!empty($file)){
+
+	              $filename = $file->getClientOriginalName();
+
+			      //Move Uploaded File
+			      $destinationPath = 'uploads/franchise';
+			      $file->move($destinationPath,$file->getClientOriginalName());
+              }else{
+              	$filename = '';
+              }
 
 	        $input = $request->only('first_name', 'last_name', 'email', 'user_name', 'password', 'phone_number','address', 'logo');
 	        $franchises = User::create([
@@ -40,13 +56,15 @@ class FranchisesController extends Controller
 	            'email' => $input['email'],
 	            'password' => bcrypt($input['password']),
 	            'phone_number' => $input['phone_number'],
+	            'address' => $input['address'],
 	            'role' => 'franchises',
+	            'logo' => $filename,
 	        ]);
 
 	        if($franchises->save())
 	        	return redirect('/admin/franchises')->with('success', 'Franchises has been added successfully.');
 	        else 
-	        	return redirect('/admin/add-franchises')->with('error', 'Franchises has been added successfully.');
+	        	return redirect('/admin/add-franchises')->with('error', 'Error saving Franchises.');
 	    } else {
 	    	$password = rand();
         	return view('admin/add-franchises', compact('password'));
@@ -58,17 +76,33 @@ class FranchisesController extends Controller
         $id = $request['id'];
         if ($request->isMethod('post')) {
 
-        	// $request->validate([
-	        //     'first_name' => 'required',
-	        //     'last_name' => 'required',
-	        //     'user_name' => 'required',
-	        //     'email' => 'required',
-	        //     'address' => 'required',
-	        //     'phone_number' => 'required',
-	        // ]);	        
+        	$request->validate([
+	            'first_name' => 'required',
+	            'last_name' => 'required',
+	            'address' => 'required',
+	            'phone_number' => 'required',
+	        ]);	
+
+	          $file = $request->file('logo');
+
+              if(!empty($file)){
+
+	              $input['logo'] = $file->getClientOriginalName();
+
+			      //Move Uploaded File
+			      $destinationPath = 'uploads/franchise';
+			      $file->move($destinationPath,$file->getClientOriginalName());
+              }else{
+              	  $input['logo'] = $request['oldimage'];
+              }         
 
 	        $input = $request->only('id', 'first_name', 'last_name','phone_number','address', 'logo');
+
 	        // $franchises = User::Where('id', $id)->update($input);
+
+	        if(!empty($file)){
+	       	 $input['logo'] = $input['logo']->getClientOriginalName();
+	    	}
 	        
 	        
 	        if(User::Where('id', $id)->update($input))

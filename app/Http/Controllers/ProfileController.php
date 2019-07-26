@@ -34,15 +34,17 @@ class ProfileController extends Controller
          * Validate request/input 
          **/
         $this->validate($request, [
-            'name' => 'required|max:255',
+            'first_name' => 'required|max:255',
             'phone_number' => 'required|max:255',
+            'address' => 'required|max:255',
+            'last_name' => 'required|max:255',
         ]);
 
         /**
          * storing the input fields name & email in variable $input
          * type array
          **/
-        $input = $request->only('name','phone_number');
+        $input = $request->only('first_name','last_name','address','phone_number');
 
         /**
          * fetching the user model

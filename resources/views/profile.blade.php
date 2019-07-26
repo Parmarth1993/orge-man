@@ -12,14 +12,26 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="PATCH">
                         </div>
-                        <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label"><b>Name:</b></label>
+                        <div class="form-group {{ $errors->has('first_name') ? ' has-error' : '' }}">
+                            <label for="first_name" class="col-md-4 control-label"><b>First Name:</b></label>
                              <div class="col-md-6">
-                                <input type="text" name="name" placeholder="Please enter your email here" class="form-control" value="{{ $user->name }}" />
+                                <input type="text" name="first_name" placeholder="Please enter your first name here" class="form-control" value="{{ $user->first_name }}" />
                              </div>
-                            <?php if ($errors->has('name')) :?>
+                            <?php if ($errors->has('first_name')) :?>
                                 <span class="help-block">
-                                    <strong>{{$errors->first('name')}}</strong>
+                                    <strong>{{$errors->first('first_name')}}</strong>
+                                </span>
+                                <?php endif;?>
+
+                        </div><br /><br />
+                        <div class="form-group {{ $errors->has('last_name') ? ' has-error' : '' }}">
+                            <label for="last_name" class="col-md-4 control-label"><b>Last Name:</b></label>
+                             <div class="col-md-6">
+                                <input type="text" name="last_name" placeholder="Please enter your last name here" class="form-control" value="{{ $user->last_name }}" />
+                             </div>
+                            <?php if ($errors->has('last_name')) :?>
+                                <span class="help-block">
+                                    <strong>{{$errors->first('last_name')}}</strong>
                                 </span>
                                 <?php endif;?>
 
@@ -47,11 +59,23 @@
                                 </span>
                                 <?php endif;?>
 
-                        </div><br /><br /><br />
+                        </div><br /><br />
+                        <div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
+                            <label for="address" class="col-md-4 control-label"><b>Address:</b></label>
+                             <div class="col-md-6">
+                                <input type="text" name="address" placeholder="Please enter your address here" class="form-control" value="{{ $user->address }}" />
+                            </div>
+                            <?php if ($errors->has('address')) :?>
+                                <span class="help-block">
+                                    <strong>{{$errors->first('address')}}</strong>
+                                </span>
+                                <?php endif;?>
+
+                        </div><br /><br />
                         <div class="form-group">
                              <label class="col-md-4 control-label"></label>
                             <div class="col-md-6">
-                                 <button type="submit" class="btn btn-default"> Submit </button>
+                                 <button type="submit" class="btn btn-primary"> Submit </button>
                             </div>
                         </div>
                     </form>

@@ -35,13 +35,13 @@ class QuoteController extends Controller
     public function add(Request $request){
 
         
-      $request->validate([
-        'name'=>'required',
-        'email'=> 'required',
-        'phone_number' => 'required',
-        'delivery_address' => 'required',
-        'departure_address' => 'required',
-      ]);
+        $request->validate([
+          'name'=>'required',
+          'email'=> 'required',
+          'phone_number' => 'required',
+          'delivery_address' => 'required',
+          'departure_address' => 'required',
+        ]);
  
 
         $input = $request->only('name','email','phone_number','delivery_address','departure_address');

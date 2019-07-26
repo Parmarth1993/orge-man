@@ -39,7 +39,7 @@
                                     <a href="{{ url('/admin/franchises/edit/'. $franchise->id ) }}" class="btn btn-default btn-sm">
                                         <i class="glyphicon glyphicon-pencil"></i>
                                     </a>
-                                    <a href="{{ url('/admin/franchises/delete/'. $franchise->id ) }}" class="btn btn-default btn-sm">
+                                    <a onclick="return confirm('Are you sure?')" href="{{ url('/admin/franchises/delete/'. $franchise->id ) }}" class="btn btn-default btn-sm">
                                         <i class="glyphicon glyphicon-trash"></i>
                                     </a>
                                 </td>

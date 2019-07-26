@@ -30,12 +30,18 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(array('prefix'=> 'admin', 'middleware' => ['auth']), function () {
 	Route::get('dashboard', 'admin\DashboardController@index');
 	Route::get('quotes', 'admin\QuotesController@list');
+	Route::get('quotes/delete/{id}', 'admin\QuotesController@delete');
 	Route::get('franchises', 'admin\FranchisesController@list');
 	Route::get('franchises/add', 'admin\FranchisesController@add');
 	Route::post('franchises/add', 'admin\FranchisesController@add');
 	Route::get('franchises/edit/{id}', 'admin\FranchisesController@update');
 	Route::post('franchises/edit/{id}', 'admin\FranchisesController@update');
 	Route::get('franchises/delete/{id}', 'admin\FranchisesController@delete');
+});
+
+
+Route::group(array('prefix'=> 'franchises', 'middleware' => ['auth']), function () {
+	Route::get('dashboard', 'franchises\DashboardController@index');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

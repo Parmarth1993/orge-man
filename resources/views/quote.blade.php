@@ -18,24 +18,44 @@
                             <label for="name" class="col-md-4 control-label"><b>Name:</b></label>
                              <div class="col-md-6">
                                 <input type="text" name="name" placeholder="Please enter your name" class="form-control" required value="" />
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
                              </div>
                         </div><br /><br />
                         <div class="form-group">
                             <label for="email" class="col-md-4 control-label"><b>Email:</b></label>
                              <div class="col-md-6">
                                 <input type="email" name="email" placeholder="Please enter your email" class="form-control" required value="" />
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                              </div>
                         </div><br /><br />
                         <div class="form-group">
                             <label for="phone_number" class="col-md-4 control-label"><b>Phone:</b></label>
                              <div class="col-md-6">
                                 <input type="text" name="phone_number" placeholder="Please enter your phone number" class="form-control" required value="" />
+                                @if ($errors->has('phone_number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone_number') }}</strong>
+                                    </span>
+                                @endif
                              </div>
                         </div><br /><br />
                         <div class="form-group">
                             <label for="address" class="col-md-4 control-label"><b>Delivery Address:</b></label>
                              <div class="col-md-6">
                                 <textarea  class="form-control"  name="delivery_address" placeholder="Please enter your address" required></textarea>
+                                @if ($errors->has('delivery_address'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('delivery_address') }}</strong>
+                                    </span>
+                                @endif
                              </div>
                         </div><br /><br /><br />
 
