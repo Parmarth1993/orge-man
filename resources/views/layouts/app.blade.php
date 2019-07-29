@@ -65,14 +65,19 @@
                             @endif
 
                             @if (Auth::user()->role == 'sales')
+                                <!-- <li>
+                                    <a href="{{ url('/sales/lead/assign-new-lead') }}">
+                                    New Lead Entry
+                                    </a>
+                                </li> -->
                                 <li>
-                                    <a href="{{ url('/sales/leads/assigned') }}">
-                                    Assigned Leads
+                                    <a href="{{ url('/sales/leads/new') }}">
+                                    New Entries
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('/sales/leads/unassigned') }}">
-                                    Unassigned Leads
+                                    <a href="{{ url('/sales/leads/pending') }}">
+                                    Pending Entries
                                     </a>
                                 </li>
                             @endif

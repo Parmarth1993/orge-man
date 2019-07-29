@@ -41,18 +41,29 @@ class QuoteController extends Controller
           'phone_number' => 'required',
           'delivery_address' => 'required',
           'departure_address' => 'required',
+          'date_of_job' => 'required',
+          'service_needed' => 'required',
+          'location' => 'required',
+          'estimate' => 'required',
+          'additional_details' => 'required',
+
         ]);
  
 
-        $input = $request->only('name','email','phone_number','delivery_address','departure_address');
+        $input = $request->only('name','email','phone_number','date_of_job','delivery_address','departure_address','service_needed','location','estimate','additional_details');
 
         //echo "<pre>";print_r($input);die;
         $quote = new Quote([
             'name' => $input['name'],
             'email' => $input['email'],
             'phone_number' => $input['phone_number'],
+            'date_of_job' => $input['date_of_job'],
             'delivery_address' => $input['delivery_address'],
             'departure_address' => $input['departure_address'],
+            'service_needed' => $input['service_needed'],
+            'location' => $input['location'],
+            'estimate' => $input['estimate'],
+            'additional_details' => $input['additional_details'],
         ]);
 
         $quote->save();

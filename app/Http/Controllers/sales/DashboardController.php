@@ -18,7 +18,7 @@ class DashboardController extends Controller
 
     public function leads(Request $request) {
     	$type = $request['type'];
-    	if($type == 'assigned')
+    	if($type == 'pending')
     		//get the list of assigned leads with lead/franchises details
     		$leads = AssignedLeads::join('quotes', 'assigned_leads.lead_id', '=', 'quotes.id')
     			->join('users', 'assigned_leads.franchises', '=', 'users.id')
@@ -34,6 +34,77 @@ class DashboardController extends Controller
     	return view('sales/leads', compact('leads', 'type'));
     }
 
+    public function assignLeadView(){
+         $franchises = User::Where('role', 'franchises')->get();   
+         return view('sales/assign-new-lead', compact('leads', 'franchises'));
+    }
+    public function assignNewLead(Request $request) {
+
+         $request->validate([
+          'name'=>'required',
+          'email'=> 'required',
+          'phone_number' => 'required',
+          'delivery_address' => 'required',
+          'departure_address' => 'required',
+          'date_of_job' => 'required',
+          'service_needed' => 'required',
+          'location' => 'required',
+          'estimate' => 'required',
+          'additional_details' => 'required',
+
+        ]);
+ 
+
+        $input = $request->only('name','email','phone_number','date_of_job','delivery_address','departure_address','service_needed','location','estimate','additional_details');
+
+        //echo "<pre>";print_r($input);die;
+        $quote = new Quote([
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'phone_number' => $input['phone_number'],
+            'date_of_job' => $input['date_of_job'],
+            'delivery_address' => $input['delivery_address'],
+            'departure_address' => $input['departure_address'],
+            'service_needed' => $input['service_needed'],
+            'location' => $input['location'],
+            'estimate' => $input['estimate'],
+            'additional_details' => $input['additional_details'],
+        ]);
+
+        $quote->save();
+
+        $id = $quote->id;
+
+        $franchises = User::Where('role', 'franchises')->get();
+
+        if ($request->isMethod('post')) {
+            $request->validate([
+                'franchises' => 'required',
+            ]); 
+
+            //save into assgined leads
+            $input = $request->only('franchises','additional_details');
+
+            $assignLead = new AssignedLeads([
+                'franchises' => $input['franchises'],
+                'lead_id' => $id,
+                'notes' => $input['additional_details'],
+            ]);
+
+            if($assignLead->save())
+                return redirect('/sales/leads/assigned')->with('success', 'Lead has been added successfully.');
+            else 
+                return redirect('/sales/lead/assign/' . $id)->with('error', 'Error saving lead.');
+        }
+        //check if already assgined
+        $checkAssigned = AssignedLeads::Where('lead_id', $id)->first();
+        if($checkAssigned && $checkAssigned->id)
+            return redirect('/sales/leads/assgined')->with('error', 'Lead has been already assgined.');
+        else
+            return view('sales/assign-lead', compact('lead', 'franchises'));
+
+    
+    }
     public function assignLead(Request $request) {
     	$id = $request['id'];
     	$lead = Quote::Where('id', $id)->first();

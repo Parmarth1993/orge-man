@@ -18,8 +18,13 @@ class CreateQuoteTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone_number');
+            $table->string('date_of_job');
             $table->string('delivery_address');
             $table->string('departure_address');
+            $table->string('service_needed');
+            $table->string('location');
+            $table->string('estimate');
+            $table->string('additional_details');
             $table->timestamps();
         });
     }

@@ -3,16 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row">  
-    	 <div class="col-md-8 col-md-offset-2">
+    	 <div class="col-md-9 col-md-offset-2">
            <div class="panel panel-default">
-                <div class="panel-heading">Get Quote</div>
+                <div class="panel-heading">New Lead Entry</div>
                  @if(session()->get('success'))
 				    <div class="alert alert-success">
 				      {{ session()->get('success') }}  
 				    </div><br />
 				  @endif
                 <div class="panel-body">
-                	 {!! Form::open(['url' => '/get-quote/add']) !!}
+                	 {!! Form::open(['url' => '/sales/lead/assignnewlead']) !!}
                 	 	{{ csrf_field() }}
                         <div class="form-group">
                             <label for="name" class="col-md-4 control-label"><b>Name:</b></label>
@@ -129,9 +129,24 @@
                         </div><br /><br /><br />
 
                          <div class="form-group">
-                             <label class="col-md-4 control-label"></label>
-                            <div class="col-md-6">
-                                 <button type="submit" class="btn btn-primary"> Submit </button>
+                         	<div class="col-md-8">
+                         		<label for="franchises" class="col-md-4 control-label"><b>Choose Franchises:</b></label>
+                         		<div class="col-md-6">
+	                                <select name="franchises" class="form-control" required  />
+	                                    <option value="">Choose Franchises</option>
+	                                    @foreach($franchises as $franchise)
+	                                        <option value="{{ $franchise->id }}">{{ $franchise->first_name }} {{ $franchise->last_name }}</option>
+	                                    @endforeach
+	                                </select>
+                            	</div>	
+                                 @if ($errors->has('franchises'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('franchises') }}</strong>
+                                    </span>
+                                @endif
+                             </div>
+                            <div class="col-md-4">
+                                 <button type="submit" class="btn btn-primary pull-left"> Submit </button>
                             </div>
                         </div>
                       {!! Form::close() !!}

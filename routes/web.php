@@ -63,7 +63,9 @@ Route::group(array('prefix'=> 'sales', 'middleware' => ['auth']), function () {
 	Route::get('dashboard', 'sales\DashboardController@index');
 	//Leads
 	Route::get('lead/assign/{id}', 'sales\DashboardController@assignLead');
+	Route::get('lead/assign-new-lead', 'sales\DashboardController@assignLeadView');
 	Route::post('lead/assign/{id}', 'sales\DashboardController@assignLead');
+	Route::post('lead/assignnewlead', 'sales\DashboardController@assignNewLead');
 	Route::get('leads/{type}', 'sales\DashboardController@leads');
 	Route::get('lead/view/{id}', 'sales\DashboardController@view');
 });
