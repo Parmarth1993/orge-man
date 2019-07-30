@@ -82,6 +82,24 @@
                                 </li>
                             @endif
 
+                            @if (Auth::user()->role == 'franchises')
+                                <li>
+                                    <a href="{{ url('/franchises/leads/new') }}">
+                                    New Orders
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/franchises/leads/upcoming') }}">
+                                    Upcoming Orders
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/franchises/leads/completed') }}">
+                                    Completed Order
+                                    </a>
+                                </li>
+                            @endif
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     Hi, {{ Auth::user()->first_name }} <span class="caret"></span>

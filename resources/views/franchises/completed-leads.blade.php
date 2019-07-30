@@ -41,8 +41,8 @@
                         <td>{{ $lead->franchises_email }}</td>
                         <td>{{ $lead->created_at }}</td>
                         <td>
-                            <a href="{{ url('/franchises/lead/complete/'. $lead->id ) }}" class="btn btn-default btn-sm">
-                                Complete
+                            <a href="{{ url('/franchises/lead/view/'. $lead->id ) }}" class="btn btn-default btn-sm">
+                                View
                             </a>
                         </td>
                       </tr> 

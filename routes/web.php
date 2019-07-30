@@ -54,6 +54,9 @@ Route::group(array('prefix'=> 'admin', 'middleware' => ['auth']), function () {
 */
 Route::group(array('prefix'=> 'franchises', 'middleware' => ['auth']), function () {
 	Route::get('dashboard', 'franchises\DashboardController@index');
+	Route::get('lead/complete/{id}', 'franchises\DashboardController@markComplete');
+	Route::post('lead/complete/{id}', 'franchises\DashboardController@markComplete');
+	Route::get('leads/completed', 'franchises\DashboardController@completedLeads');
 });
 
 /*

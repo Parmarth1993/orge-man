@@ -17,7 +17,7 @@
                     </div><br />
                   @endif
                 <div class="panel-body">
-                	 {!! Form::open(['url' => '/sales/lead/assign/{id}'. $lead->id]) !!}
+                	 {!! Form::open(['url' => '/sales/lead/assign/'. $lead->id]) !!}
                 	 	{{ csrf_field() }}
                         <div class="form-group">
                             <label for="name" class="col-md-4 control-label"><b>Lead Name:</b></label>
