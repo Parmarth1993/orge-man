@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Franchises Dashboard</div>
+                <div class="panel-heading">Completed Dashboard</div>
             </div>
             @if(session()->get('success'))
                 <div class="alert alert-success">

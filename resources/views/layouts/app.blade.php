@@ -80,6 +80,11 @@
                                     Pending Entries
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="{{ url('/sales/leads/completed') }}">
+                                    Complete Entries
+                                    </a>
+                                </li>
                             @endif
 
                             @if (Auth::user()->role == 'franchises')

@@ -6,6 +6,7 @@ use Auth;
 use App\User;
 use App\Quote;
 use App\AssignedLeads;
+use App\CompletedLeads;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -25,14 +26,25 @@ class DashboardController extends Controller
     			->orderBy('assigned_leads.created_at')
     			->select('assigned_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email')
     			->get();
-    	else
-    		//get the list of leads which are not assigned in assigned_leads table
+    	else if($type == 'completed')
+
+    	   $leads = AssignedLeads::join('quotes', 'assigned_leads.lead_id', '=', 'quotes.id')
+                ->join('users', 'assigned_leads.franchises', '=', 'users.id')
+                ->join('completed_leads', 'completed_leads.lead_id', '=', 'assigned_leads.lead_id')
+                ->orderBy('assigned_leads.created_at')
+                ->select('assigned_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email')
+               // ->where('assigned_leads.franchises', '=', $user->id)
+               // ->where('completed_leads.franchises', '=', $user->id)
+            ->get();
+        else    
+        	//get the list of leads which are not assigned in assigned_leads table
     		$leads = Quote::whereNotIn('id', function($q){
 					    $q->select('lead_id')->from('assigned_leads');
 					})->get();
 
     	return view('sales/leads', compact('leads', 'type'));
     }
+
 
     public function assignLeadView(){
          $franchises = User::Where('role', 'franchises')->get();   
@@ -89,6 +101,7 @@ class DashboardController extends Controller
                 'franchises' => $input['franchises'],
                 'lead_id' => $id,
                 'notes' => $input['additional_details'],
+                'status' => 0,
             ]);
 
             if($assignLead->save())
@@ -122,6 +135,7 @@ class DashboardController extends Controller
 	            'franchises' => $input['franchises'],
 	            'lead_id' => $input['lead_id'],
 	            'notes' => $input['notes'],
+                'status' => 0,
 	        ]);
 
 	        if($assignLead->save())
@@ -145,5 +159,18 @@ class DashboardController extends Controller
     			->select('assigned_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email')
     			->first();
     	return view('sales/view-lead', compact('lead'));
+    }
+
+    public function viewComplete(Request $request){
+
+        $id = $request['id'];
+        $lead = CompletedLeads::join('quotes', 'completed_leads.lead_id', '=', 'quotes.id')
+                ->join('users', 'completed_leads.franchises', '=', 'users.id')
+                ->orderBy('completed_leads.created_at')
+                ->select('completed_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email')
+                ->where('completed_leads.lead_id', '=', $id)
+                ->first();
+        return view('sales/completed-view-lead', compact('lead'));
+
     }
 }

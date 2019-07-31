@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Franchises Dashboard</div>
+                <div class="panel-heading">Upcoming Orders</div>
             </div>
             @if(session()->get('success'))
                 <div class="alert alert-success">
@@ -41,8 +41,8 @@
                         <td>{{ $lead->franchises_email }}</td>
                         <td>{{ $lead->created_at }}</td>
                         <td>
-                            <a href="{{ url('/franchises/lead/view/'. $lead->lead_id ) }}" class="btn btn-default btn-sm">
-                                View
+                            <a href="{{ url('/franchises/lead/complete/'. $lead->lead_id ) }}" class="btn btn-default btn-sm">
+                                Complete
                             </a>
                         </td>
                       </tr> 

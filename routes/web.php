@@ -54,9 +54,14 @@ Route::group(array('prefix'=> 'admin', 'middleware' => ['auth']), function () {
 */
 Route::group(array('prefix'=> 'franchises', 'middleware' => ['auth']), function () {
 	Route::get('dashboard', 'franchises\DashboardController@index');
+	Route::get('leads/new', 'franchises\DashboardController@index');
+	Route::get('leads/upcoming', 'franchises\DashboardController@upcoming');
+	Route::get('lead/confirm/{id}', 'franchises\DashboardController@confirm');
+	Route::post('lead/confirm/{id}', 'franchises\DashboardController@confirm');
 	Route::get('lead/complete/{id}', 'franchises\DashboardController@markComplete');
 	Route::post('lead/complete/{id}', 'franchises\DashboardController@markComplete');
 	Route::get('leads/completed', 'franchises\DashboardController@completedLeads');
+	Route::get('lead/view/{id}', 'franchises\DashboardController@view');
 });
 
 /*
@@ -71,6 +76,8 @@ Route::group(array('prefix'=> 'sales', 'middleware' => ['auth']), function () {
 	Route::post('lead/assignnewlead', 'sales\DashboardController@assignNewLead');
 	Route::get('leads/{type}', 'sales\DashboardController@leads');
 	Route::get('lead/view/{id}', 'sales\DashboardController@view');
+	Route::get('lead/complete-view/{id}', 'sales\DashboardController@viewComplete');
+	Route::get('leads/completed', 'sales\DashboardController@completed');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

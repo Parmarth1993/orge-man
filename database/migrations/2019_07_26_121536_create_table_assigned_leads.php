@@ -20,6 +20,7 @@ class CreateTableAssignedLeads extends Migration
             $table->foreign('lead_id')->references('id')->on('quotes');
             $table->foreign('franchises')->references('id')->on('users');
             $table->string('notes')->nullable();
+            $table->tinyInteger('status')->default('0');
             $table->timestamps();
         });
     }

@@ -103,7 +103,7 @@ class FranchisesController extends Controller
 	    	}
 	        
 	        
-	        if(User::Where('id', $id)->update($input))
+	    if(User::Where('id', $id)->update($input))
 	        	return redirect('/admin/franchises')->with('success', 'Franchises has been updated successfully.');
 	        else 
 	        	return redirect('/admin/franchises/edit/' . $id)->with('error', 'Error updating data.');

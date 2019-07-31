@@ -5,7 +5,7 @@
     <div class="row">  
     	 <div class="col-md-12 ">
            <div class="panel panel-default">
-                <div class="panel-heading">Complete Order for #{{ $lead->id }} {{ $lead->quote_name }}</div>
+                <div class="panel-heading">Complete Order for #{{ $lead->lead_id }} {{ $lead->quote_name }}</div>
                 @if(session()->get('success'))
       				    <div class="alert alert-success">
       				      {{ session()->get('success') }}  
@@ -17,7 +17,7 @@
                   </div><br />
                 @endif
                 <div class="panel-body">
-                	 {!! Form::open(['url' => 'franchises/lead/complete/'. $lead->id, 'files'=>'true']) !!}
+                	 {!! Form::open(['url' => 'franchises/lead/complete/'. $lead->lead_id, 'files'=>'true']) !!}
                 	 	{{ csrf_field() }}   
                     <div class="col-md-12 "> 
                       <div class="col-md-4 ">                     
@@ -151,7 +151,7 @@
                     <div class="col-md-12 ">
                       <div class="col-md-4 ">
                         <div class="form-group ">
-                          <input type="hidden" name="lead_id" required value="{{ $lead->id }}" readonly />
+                          <input type="hidden" name="lead_id" required value="{{ $lead->lead_id }}" readonly />
                           <input type="hidden" name="franchises" required value="{{ $user->id }}" readonly />
                           <button type="submit" class="btn btn-primary"> Submit </button>
                         </div>
