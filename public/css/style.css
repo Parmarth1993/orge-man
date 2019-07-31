@@ -1,0 +1,408 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Montserrat';
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../font/Montserrat-Light.eot');
+    src: url('../font/Montserrat-Light.eot?#iefix') format('embedded-opentype'),
+        url('../font/Montserrat-Light.woff2') format('woff2'),
+        url('../font/Montserrat-Light.woff') format('woff'),
+        url('../font/Montserrat-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: '../font/Montserrat';
+    src: url('../font/Montserrat-Medium.eot');
+    src: url('../font/Montserrat-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../font/Montserrat-Medium.woff2') format('woff2'),
+        url('../font/Montserrat-Medium.woff') format('woff'),
+        url('../font/Montserrat-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../font/Montserrat-Bold.eot');
+    src: url('../font/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../font/Montserrat-Bold.woff2') format('woff2'),
+        url('../font/Montserrat-Bold.woff') format('woff'),
+        url('../font/Montserrat-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../font/Montserrat-ExtraBold.eot');
+    src: url('../font/Montserrat-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('../font/Montserrat-ExtraBold.woff2') format('woff2'),
+        url('../font/Montserrat-ExtraBold.woff') format('woff'),
+        url('../font/Montserrat-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../font/Montserrat-ExtraLight.eot');
+    src: url('../font/Montserrat-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('../font/Montserrat-ExtraLight.woff2') format('woff2'),
+        url('../font/Montserrat-ExtraLight.woff') format('woff'),
+        url('../font/Montserrat-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../font/Montserrat-Regular.eot');
+    src: url('../font/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../font/Montserrat-Regular.woff2') format('woff2'),
+        url('../font/Montserrat-Regular.woff') format('woff'),
+        url('../font/Montserrat-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../font/Montserrat-Thin.eot');
+    src: url('../font/Montserrat-Thin.eot?#iefix') format('embedded-opentype'),
+        url('../font/Montserrat-Thin.woff2') format('woff2'),
+        url('../font/Montserrat-Thin.woff') format('woff'),
+        url('../font/Montserrat-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../font/Montserrat-Black.eot');
+    src: url('../font/Montserrat-Black.eot?#iefix') format('embedded-opentype'),
+        url('../font/Montserrat-Black.woff2') format('woff2'),
+        url('../font/Montserrat-Black.woff') format('woff'),
+        url('../font/Montserrat-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../font/Montserrat-SemiBold.eot');
+    src: url('../font/Montserrat-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('../font/Montserrat-SemiBold.woff2') format('woff2'),
+        url('../font/Montserrat-SemiBold.woff') format('woff'),
+        url('../font/Montserrat-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+.side-dashboard-frenchiese {
+    padding: 20px 30px;   
+     background-color: #3361d1;
+     min-height: 100vh;
+}
+.side-dashboard-frenchiese .side-frenchsee-img>img {
+    max-width: 150px;
+    width: 100%;
+}
+.Franchisee-Dashboard {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+.Franchisee-Dashboard .side-dashboard-frenchiese {
+    width: 25%;
+}
+.sales-Dashboard {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+.sales-Dashboard .side-dashboard-frenchiese {
+    width: 25%;
+}
+.main-frenchise-cntnt {
+    width: 75%;
+}
+.ordered-products>a {
+    display: block;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    border: 1px solid #fff;
+    padding: 20px;
+    margin-bottom: 15px;
+    text-decoration: none;
+}
+.side-dashboard-frenchiese {
+    text-align: center;
+}
+.side-frenchsee-img {
+    margin-bottom: 25px;
+}
+.inner-wraper-dash-contnt {
+    padding: 60px 0px;
+}
+.inner-wraper-dash-contnt>h2 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #000;
+}
+.inner-wraper-dash-contnt>h2 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #000;
+    padding-left: 55px;
+    padding-right: 55px;
+}
+.search_value-frenchisee {
+    padding: 0px 55px;
+    margin-bottom: 25px;
+}
+.search_value-frenchisee>input {
+    border: 1px solid #000;
+    padding-left: 15px;
+    height: 50px;
+    font-size: 19px;
+    text-transform: capitalize;
+    color: #000;
+    font-weight: 400;
+    margin-right: 15px;
+    min-width: 320px;
+}
+.search_value-frenchisee>input::placeholder {
+color: #000;
+}
+input:focus{
+    outline: none;
+}
+textarea:focus{
+    outline: none;
+}
+.collapsible-card-headEr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.frenchise_order-details .card {
+    border-radius: 0px;
+    margin-bottom: 15px;
+}
+.frenchise_order-details .card-header>.collapsible-card-headEr {
+    background-color: #3361d1;
+    margin-left: -1px;
+    margin-right: -1px;
+    border-radius: 0px !important;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+.frenchise_order-details .card-header{
+    padding: 0px;
+}
+.collapsible-card-headEr a.card-link {
+    color: #fff;
+    font-size: 28px;
+    font-weight: 600;
+}
+.collapsible-card-headEr a.card-link:hover {
+    color: #fff;
+}
+.right_card-cntn a.confirmed_order {
+    background-color: #fff;
+    display: inline-block;
+    margin-right: 25px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #3361d1;
+    padding: 6px 15px;
+    text-decoration: none;
+}
+.right_card-cntn>span {
+    color: #fff;
+}
+.body_wrapper-cntnt {
+    display: flex;
+    flex-direction: row;
+}
+.left-collapce-sec>h4 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #555555;
+    margin-bottom: 15px;
+}
+.left-collapce-sec>span {
+    display: block;
+    color: #555555;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+.left-collapce-sec>span>span {
+font-weight: 300;
+font-size: 18px;
+padding-left: 5px;
+}
+.left-collapce-sec>span>a {
+    font-weight: 300;
+    text-decoration: none;
+    color: #555555;
+    font-size: 18px;
+    padding-left: 5px;
+    }
+    .right-collapce-sec>span {
+        display: block;
+        display: block;
+    color: #555555;
+    font-weight: 300;
+    margin-bottom: 5px;
+    font-size: 18px;
+    }
+    .right-collapce-sec>span>span {
+        font-weight: 700;
+        font-size: 20px;
+        padding-right: 5px;
+        display: block;
+        }
+        .frenchise_order-details .card .card-body {
+            padding: 0px;
+        }
+        .frenchise_order-details .card .card-body .body_wrapper-cntnt {
+            border: 1px solid #555555;
+            border-top: 0px;
+            padding-top: 36px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 36px;
+        }
+        .frenchise_order-details .card .card-body {
+            padding: 0px 55px 37px 55px;
+        }
+        .body_wrapper-btns>a {
+            background-color: #3361d1;
+            color: #fff;
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 10px 15px;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+        .frenchise_order-details .card .card-body .body_wrapper-cntnt>div {
+            width: 50%;
+        }
+        .body_wrapper-btns {
+            margin-top: 30px;
+        }
+        .ordered-products>a:hover{
+            cursor: pointer;
+            background-color: #555555;
+        }
+        .right_card-cntn a.confirmed_order:hover{
+            cursor: pointer;
+            background-color: #555555;
+            color: #fff;
+        }
+        .body_wrapper-btns>a:hover{
+            cursor: pointer;
+            background-color: #555555;
+        }
+
+
+
+
+
+
+
+       /* Sales-page*//* Sales-page*//* Sales-page*//* Sales-page*//* Sales-page*/
+
+        .sales_input-details>h2 {
+            background-color: #3361d1;
+            margin-left: -1px;
+            margin-right: -1px;
+            border-radius: 0px !important;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 55px;
+            padding-right: 55px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 28px;
+        }
+        form.sales-dashbard-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #000;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        form.sales-dashbard-form {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 15px;
+        }
+        form.sales-dashbard-form>div {
+            margin: 0px 10px 20px 10px;
+            width: 31%;
+        }
+        form.sales-dashbard-form>div input {
+            width: 100%;
+            border: 1px solid #dae3e8;
+            height: 42px;
+            font-size: 18px;
+            color: #555555;
+            padding-left: 15px;
+        }
+        form.sales-dashbard-form>.form-grouph.textarea {
+            width: 100%;
+        }
+        form.sales-dashbard-form>div  textarea {
+            width: 100%;
+            border: 1px solid #dae3e8;
+            font-size: 18px;
+            color: #555555;
+            padding-left: 15px;
+        }
+        .form-grouph.select-submit {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            max-width: 800px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        select.input-sales-select {
+            width: 100%;
+            border: 1px solid #dae3e8;
+            display: inline-block;
+            margin-right: 20px;
+            height: 50px;
+            padding-left: 15px;
+            font-size: 18px;
+            color: #000;
+        }
+        form.sales-dashbard-form input[type="submit"] {
+            background-color: #3361d1;
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 6px 35px !important;
+            margin-right: 10px;
+            text-decoration: none;
+            color: #fff !important;
+            height: 50px !important;
+        }
+
+
+        /* End Sales-page*/   /* End Sales-page*/   /* End Sales-page*/   /* End Sales-page*/

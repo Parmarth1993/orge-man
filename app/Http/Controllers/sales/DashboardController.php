@@ -24,7 +24,7 @@ class DashboardController extends Controller
     		$leads = AssignedLeads::join('quotes', 'assigned_leads.lead_id', '=', 'quotes.id')
     			->join('users', 'assigned_leads.franchises', '=', 'users.id')
     			->orderBy('assigned_leads.created_at')
-    			->select('assigned_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email')
+    			->select('assigned_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'quotes.service_needed as service_needed' , 'quotes.estimate as estimate', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email')
     			->get();
     	else if($type == 'completed')
 
@@ -32,7 +32,7 @@ class DashboardController extends Controller
                 ->join('users', 'assigned_leads.franchises', '=', 'users.id')
                 ->join('completed_leads', 'completed_leads.lead_id', '=', 'assigned_leads.lead_id')
                 ->orderBy('assigned_leads.created_at')
-                ->select('assigned_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email')
+                ->select('assigned_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'quotes.service_needed as service_needed' , 'quotes.estimate as estimate', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email')
                // ->where('assigned_leads.franchises', '=', $user->id)
                // ->where('completed_leads.franchises', '=', $user->id)
             ->get();
@@ -46,7 +46,7 @@ class DashboardController extends Controller
     }
 
 
-    public function assignLeadView(){
+    public function create(){
          $franchises = User::Where('role', 'franchises')->get();   
          return view('sales/assign-new-lead', compact('leads', 'franchises'));
     }
@@ -156,7 +156,7 @@ class DashboardController extends Controller
     	$lead = AssignedLeads::Where('assigned_leads.id', $id)
     			->join('quotes', 'assigned_leads.lead_id', '=', 'quotes.id')
     			->join('users', 'assigned_leads.franchises', '=', 'users.id')
-    			->select('assigned_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email')
+    			->select('assigned_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'quotes.service_needed as service_needed' , 'quotes.estimate as estimate', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email')
     			->first();
     	return view('sales/view-lead', compact('lead'));
     }
