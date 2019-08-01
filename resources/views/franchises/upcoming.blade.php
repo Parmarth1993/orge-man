@@ -17,7 +17,7 @@
                  </div>
                  <div id="collapse{{ $key }}" class="collapse" data-parent="#accordion">
                     <div class="card-body">
-                       <div class="body_wrapper-cntnt">
+                       <div class="body_wrapper-cntnt" id="printidshow"> 
                           <div class="left-collapce-sec">
                              <h4>{{ $lead->quote_name }}</h4>
                              <span>Phone No: <a href="tel:{{ $lead->quote_phone_number }}">{{ $lead->quote_phone_number }}</a></span>
@@ -37,7 +37,7 @@
                           </div>
                        </div>
                        <div class="body_wrapper-btns">
-                          <a href="#" role="button">Print order</a>
+                          <a onCLick="printContent('printidshow')" href="#" role="button">Print order</a>
                           <a href="{{ url('/franchises/lead/complete/'. $lead->lead_id ) }}" role="button">complete order</a>
                        </div>
                     </div>
@@ -47,4 +47,17 @@
         @endforeach
     </div>
 </div>
-@endsection               
+@endsection       
+
+<script type="text/javascript">
+  
+  function printContent(el){
+    var restorepage = document.body.innerHTML;
+    var printcontent = document.getElementById(el).innerHTML;
+    document.body.innerHTML = printcontent;
+    window.print();
+    document.body.innerHTML = restorepage;
+}
+
+
+</script>        

@@ -26,8 +26,11 @@
                             <img src="{{ asset('images/dashboard.png') }}" alt="">
                         </div>
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                        <div class="ordered-products">
+                           <a href="{{ url('/get-quote') }}">Get Quote</a>
+                           <a href="{{ route('login') }}">Login</a>
+                           <a href="{{ route('register') }}">Register</a>
+                        </div>
                         @else
                         <div class="ordered-products">
                             @if (Auth::user()->role == 'sales')
@@ -46,6 +49,8 @@
                                         Quotes</a>
                                 <a href="{{ url('/admin/sales') }}">
                                         Sales</a>
+                            @elseif (Auth::user()->role == 'customer')            
+                                <a href="{{ url('/get-quote') }}">Get Quote</a>
                             @endif
                                 <a href="{{ url('/profile') }}">{{ Auth::user()->first_name }} Profile</a>
                                 <a href="{{ route('logout') }}"

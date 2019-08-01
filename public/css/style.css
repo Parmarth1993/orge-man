@@ -128,7 +128,7 @@ body{
     width: 25%;
 }
 .main-frenchise-cntnt {
-    width: 75%;
+    width: 74%;
 }
 .ordered-products>a {
     display: block;
@@ -298,6 +298,17 @@ padding-left: 5px;
             margin-right: 10px;
             text-decoration: none;
         }
+        .body_wrapper-btns>button {
+            background-color: #3361d1;
+            color: #fff;
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 10px 15px;
+            margin-right: 10px;
+            margin-left: 5px;
+            text-decoration: none;
+        }
         .frenchise_order-details .card .card-body .body_wrapper-cntnt>div {
             width: 50%;
         }
@@ -316,6 +327,11 @@ padding-left: 5px;
         .body_wrapper-btns>a:hover{
             cursor: pointer;
             background-color: #555555;
+        }
+        .body_wrapper-btns>button:hover{
+            cursor: pointer;
+            background-color: #555555;
+            color:#fff;
         }
 
 

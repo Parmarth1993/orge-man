@@ -23,7 +23,7 @@
                                 </span>
                                 <?php endif;?>
 
-                        </div><br /><br />
+                        </div>
                         <div class="form-group {{ $errors->has('last_name') ? ' has-error' : '' }}">
                             <label for="last_name" class="col-md-4 control-label"><b>Last Name:</b></label>
                              <div class="col-md-6">
@@ -35,7 +35,7 @@
                                 </span>
                                 <?php endif;?>
 
-                        </div><br /><br />
+                        </div>
                         <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label"><b>Email:</b></label>
                              <div class="col-md-6">
@@ -47,7 +47,7 @@
                                 </span>
                                 <?php endif;?>
 
-                        </div><br /><br />
+                        </div>
                         <div class="form-group {{ $errors->has('phone_number') ? ' has-error' : '' }}">
                             <label for="phone_number" class="col-md-4 control-label"><b>Phone Number:</b></label>
                              <div class="col-md-6">
@@ -59,7 +59,7 @@
                                 </span>
                                 <?php endif;?>
 
-                        </div><br /><br />
+                        </div>
                         <div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
                             <label for="address" class="col-md-4 control-label"><b>Address:</b></label>
                              <div class="col-md-6">
@@ -71,7 +71,7 @@
                                 </span>
                                 <?php endif;?>
 
-                        </div><br /><br />
+                        </div>
                         <div class="form-group">
                              <label class="col-md-4 control-label"></label>
                             <div class="col-md-6">
