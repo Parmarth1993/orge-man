@@ -75,6 +75,7 @@
                         <a href="{{ url('/get-quote') }}">Get Quote</a>
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ url('/contact') }}">Contact Us</a>
                     @endauth
                 </div>
             @endif

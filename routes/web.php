@@ -81,5 +81,7 @@ Route::group(array('prefix'=> 'sales', 'middleware' => ['auth']), function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/contact', 'ContactController@index')->name('Contact');
 Route::get('/get-quote', 'QuoteController@index');
 Route::post('get-quote/add', 'QuoteController@add');
+Route::post('contact/send', 'ContactController@send');

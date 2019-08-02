@@ -23,13 +23,14 @@
                 <div class="sales-Dashboard">
                     <div class="side-dashboard-frenchiese">
                         <div class="side-frenchsee-img">
-                            <img src="{{ asset('images/dashboard.png') }}" alt="">
+                             <a href="/"><img src="{{ asset('images/dashboard.png') }}" alt=""></a>
                         </div>
                         @guest
                         <div class="ordered-products">
                            <a href="{{ url('/get-quote') }}">Get Quote</a>
                            <a href="{{ route('login') }}">Login</a>
                            <a href="{{ route('register') }}">Register</a>
+                           <a href="{{ url('/contact') }}">Contact Us</a>
                         </div>
                         @else
                         <div class="ordered-products">

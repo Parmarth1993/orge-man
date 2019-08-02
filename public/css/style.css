@@ -111,6 +111,10 @@ body{
     max-width: 150px;
     width: 100%;
 }
+.side-dashboard-frenchiese .side-frenchsee-img > a >img {
+    max-width: 150px;
+    width: 100%;
+}
 .Franchisee-Dashboard {
     display: flex;
     flex-direction: row;

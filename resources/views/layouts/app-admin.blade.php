@@ -45,6 +45,7 @@
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ url('/contact') }}">Contact Us</a></li>
                         @else
                             @if (Auth::user()->role == 'admin')
                             <li>
