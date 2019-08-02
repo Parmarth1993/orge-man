@@ -7,3 +7,15 @@
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+td {
+  &.input-box {
+    width: 330px;
+  }
+  &.close-btn {
+    padding-left: 10px;
+  }
+}
+
+tr.table-row {
+  margin-bottom: 10px;
+}

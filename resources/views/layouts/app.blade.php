@@ -79,5 +79,22 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){      
+          var i=1;  
+
+          $('#addSupply').click(function(){  
+               i++;  
+               $('#supplies').append('<div class="form-grouph"><label for="supplies_sold" >Supplies Sold</label><select  name="supplies[sold][]" class="input-sales-select" required/><option value="">Choose from the supplies below</option><option value="supply">Test Supply</option></select></div><div class="form-grouph"><label for="quantity" class="control-label"><br></label><input type="text" name="supplies[quantity][]" class="form-control" placeholder="Quantity" required /></div><div class="form-grouph"><label for="price" class="control-label"><br></label><input type="text" name="supplies[price][]" class="form-control" placeholder="Price" required /></div>');  
+          });
+
+
+          $(document).on('click', '.btn_remove', function(){  
+               var button_id = $(this).attr("id");   
+               $('#row'+button_id+'').remove();  
+          });  
+
+        });  
+    </script>
 </body>
 </html>

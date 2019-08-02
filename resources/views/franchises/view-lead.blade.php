@@ -47,16 +47,12 @@
         <div class="form-grouph">
             <label for="supplies_sold" >Supplies Sold</label>
             <?php
-            $leaddata = json_decode($lead->supplies, true);  
-            $counter = 0;
-             foreach ($leaddata as $key => $value) {
-              ?>
-              <span><?php echo $key.": ".$value[$counter];?></span>
-              <?php
-               # code...
-             // $counter++;
-             }
-             ?> 
+              $leaddata = json_decode($lead->supplies, true);  
+              for ($i = 0; $i < sizeof($leaddata['sold']); $i++) { ?>
+                <span>Supply: <?php echo $leaddata['sold'][$i];?></span>
+                <span>Quantity: <?php echo $leaddata['quantity'][$i];?></span>
+                <span>Price: <?php echo $leaddata['price'][$i];?></span>
+              <?php } ?> 
         </div>
         <div class="form-grouph textarea">
           <label for="job_notes" >Additional Job Notes</label>

@@ -94,6 +94,57 @@
                                  <input type="hidden" name="oldimage" value="{{  $franchises->logo }}">
                              </div>
                         </div><br /><br /><br />
+
+                        <div class="form-group">
+                            <label for="owner_name" class="col-md-4 control-label"><b>Owner Name:</b></label>
+                             <div class="col-md-6">
+                                <input type="text" name="owner_name" placeholder="Enter Owner Name" class="form-control" required value="{{ $franchises->owner_name }}" />
+                                @if ($errors->has('owner_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('owner_name') }}</strong>
+                                    </span>
+                                @endif
+                             </div>
+                        </div><br /><br />
+
+                        <div class="form-group">
+                            <label for="no_of_trucks" class="col-md-4 control-label"><b>Number of Trucks:</b></label>
+                             <div class="col-md-6">
+                                <input type="text" name="no_of_trucks" placeholder="Number of Trucks" class="form-control" required value="{{ $franchises->no_of_trucks }}" />
+                                @if ($errors->has('no_of_trucks'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('no_of_trucks') }}</strong>
+                                    </span>
+                                @endif
+                             </div>
+                        </div><br /><br />
+
+                        <div class="form-group">
+                            <label for="employees" class="col-md-4 control-label"><b>Employee Name:</b></label>
+                             <div class="col-md-6" id="dynamic_field">
+                                <table>
+                                    @foreach($employees as $key => $employee)
+                                        <tr id="row{{ $key }}" class="table-row">
+                                            <td class="input-box"><input type="text" name="employees[]" placeholder="Enter Employee Name" class="form-control" required value="{{ $employee }}" /></td>
+                                        @if($key > 0)
+                                            <td class="close-btn">
+                                                <button type="button" name="remove" id="{{ $key }}" class="btn btn-danger btn_remove">X</button>
+                                            </td>
+                                        @endif
+                                        </tr>
+                                        
+                                         @if ($errors->has('employees'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('employees') }}</strong>
+                                            </span>
+                                        @endif
+                                    @endforeach
+                                </table>
+                             </div>
+                             <div class="col-md-1">
+                                 <button type="button" name="add" id="add" class="btn btn-success"> Add More </button>
+                             </div>
+                        </div><br /><br />
                         
                          <div class="form-group">
                              <label class="col-md-4 control-label"></label>

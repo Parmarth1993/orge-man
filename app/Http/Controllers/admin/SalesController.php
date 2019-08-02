@@ -86,6 +86,7 @@ class SalesController extends Controller
 	            'last_name' => 'required',
 	            'address' => 'required',
 	            'phone_number' => 'required',
+	            'employees' => 'required',
 	        ]);	
 
 	          $file = $request->file('logo');
@@ -101,12 +102,14 @@ class SalesController extends Controller
               	  $input['logo'] = $request['oldimage'];
               }         
 
-	        $input = $request->only('id', 'first_name', 'last_name','phone_number','address', 'logo');
+	        $input = $request->only('id', 'first_name', 'last_name','phone_number','address', 'logo', 'employees');
 
 	        if(!empty($file)){
 	       	 $input['logo'] = $input['logo']->getClientOriginalName();
 	    	}
 	        
+	        $employeeNames = json_encode($input['employees']);
+	        $input['employees'] = $employeeNames;
 	        
 	        if(User::Where('id', $id)->update($input))
 	        	return redirect('/admin/sales')->with('success', 'Sales has been updated successfully.');
@@ -114,7 +117,8 @@ class SalesController extends Controller
 	        	return redirect('/admin/sales/edit/' . $id)->with('error', 'Error updating data.');
 	    } else {
 	    	$sales = User::Where('id', $id)->first();
-	    	return view('admin/edit-sales', compact('sales'));
+	    	$employees = json_decode($sales->employees, true);
+	    	return view('admin/edit-sales', compact('sales', 'employees'));
 	    }
 
     }

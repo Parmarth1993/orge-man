@@ -71,43 +71,38 @@
                 </span>
             @endif
         </div>
-        <div class="form-grouph">
-            <label for="supplies_sold" >Supplies Sold</label>
-            <select  name="supplies[sold][]" class="input-sales-select" required/>
-              <option value="">Choose from the supplies below</option>
-              <option value="supply">Test Supply</option>
-            </select>
-            @if ($errors->has('supplies_sold'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('supplies_sold') }}</strong>
-                </span>
-            @endif
+        <div id="supplies">
+            <div class="form-grouph">
+                <label for="supplies_sold" >Supplies Sold</label>
+                <select  name="supplies[sold][]" class="input-sales-select" required/>
+                  <option value="">Choose from the supplies below</option>
+                  <option value="supply">Test Supply</option>
+                </select>
+                @if ($errors->has('supplies_sold'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('supplies_sold') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-grouph">
+                <label for="quantity" class="control-label"><br></label>
+                <input type="text" name="supplies[quantity][]" class="form-control" placeholder="Quantity" required />
+                @if ($errors->has('quantity'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('quantity') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-grouph">
+                <label for="price" class="control-label"><br></label>
+                <input type="text" name="supplies[price][]" class="form-control" placeholder="Price" required />
+                @if ($errors->has('price'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('price') }}</strong>
+                    </span>
+                @endif
+            </div>
         </div>
-        <div class="form-grouph">
-            <label for="quantity" class="control-label"><br></label>
-            <!-- <br> -->
-            <input type="text" name="supplies[quantity][]" class="form-control" placeholder="Quantity" required />
-            @if ($errors->has('quantity'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('quantity') }}</strong>
-                </span>
-            @endif
-        </div>
-        <div class="form-grouph">
-            <label for="price" class="control-label"><br></label>
-            <!-- <br> -->
-            <input type="text" name="supplies[price][]" class="form-control" placeholder="Price" required />
-            @if ($errors->has('price'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('price') }}</strong>
-                </span>
-            @endif
-        </div>
-        <!-- <div class="form-grouph">
-            <label for="price" class="control-label"><br></label>
-            <br>
-            <button class="btn btn-primary" />Add More Supplies</button>
-        </div> -->
         <div class="form-grouph textarea">
           <label for="job_notes" >Additional Job Notes</label>
           <textarea name="job_notes" class="form-control" placeholder="Additional Job Notes" /></textarea>
@@ -121,7 +116,7 @@
           <input type="hidden" name="lead_id" required value="{{ $lead->lead_id }}" readonly />
           <input type="hidden" name="franchises" required value="{{ $user->id }}" readonly />
          <input type="submit" value="Submit">
-         <button class="btn btn-primary" />Add More Supplies</button>
+         <input type="button" class="btn btn-primary" id="addSupply"/ value="Add More Supplies">
         </div>
       {!! Form::close() !!}
 </div>

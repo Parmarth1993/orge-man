@@ -94,6 +94,33 @@
                                  <input type="hidden" name="oldimage" value="{{  $sales->logo }}">
                              </div>
                         </div><br /><br /><br />
+
+                        <div class="form-group">
+                            <label for="employees" class="col-md-4 control-label"><b>Employee Name:</b></label>
+                             <div class="col-md-6" id="dynamic_field">
+                                <table>
+                                    @foreach($employees as $key => $employee)
+                                        <tr id="row{{ $key }}" class="table-row">
+                                            <td class="input-box"><input type="text" name="employees[]" placeholder="Enter Employee Name" class="form-control" required value="{{ $employee }}" /></td>
+                                        @if($key > 0)
+                                            <td class="close-btn">
+                                                <button type="button" name="remove" id="{{ $key }}" class="btn btn-danger btn_remove">X</button>
+                                            </td>
+                                        @endif
+                                        </tr>
+                                        
+                                         @if ($errors->has('employees'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('employees') }}</strong>
+                                            </span>
+                                        @endif
+                                    @endforeach
+                                </table>
+                             </div>
+                             <div class="col-md-1">
+                                 <button type="button" name="add" id="add" class="btn btn-success"> Add More </button>
+                             </div>
+                        </div><br /><br />
                         
                          <div class="form-group">
                              <label class="col-md-4 control-label"></label>

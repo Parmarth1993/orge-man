@@ -17,7 +17,7 @@
                  </div>
                  <div id="collapse{{ $key }}" class="collapse" data-parent="#accordion">
                     <div class="card-body">
-                       <div class="body_wrapper-cntnt" id="printidshow"> 
+                       <div class="body_wrapper-cntnt" id="printidshow{{ $key }}"> 
                           <div class="left-collapce-sec">
                              <h4>{{ $lead->quote_name }}</h4>
                              <span>Phone No: <a href="tel:{{ $lead->quote_phone_number }}">{{ $lead->quote_phone_number }}</a></span>
@@ -37,7 +37,7 @@
                           </div>
                        </div>
                        <div class="body_wrapper-btns">
-                          <a onCLick="printContent('printidshow')" href="#" role="button">Print order</a>
+                          <a onCLick="printContent('printidshow{{ $key }}')" href="#" role="button">Print order</a>
                           <a href="{{ url('/franchises/lead/complete/'. $lead->lead_id ) }}" role="button">complete order</a>
                        </div>
                     </div>

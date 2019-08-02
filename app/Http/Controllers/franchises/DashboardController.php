@@ -101,7 +101,6 @@ class DashboardController extends Controller
             $input['supplies'] = json_encode($request['supplies']);
             $input['invoice_image'] = $filename_invoice_image;
             $input['job_images'] = $filename_job_images;
-
             $lead = new CompletedLeads($input);
             if($lead->save())
             	return redirect('/franchises/dashboard')->with('success', 'Order has been completed.');

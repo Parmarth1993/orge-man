@@ -52,7 +52,7 @@ class FranchisesController extends Controller
 
 	        $input = $request->only('first_name', 'last_name', 'email', 'user_name', 'password', 'phone_number','address', 'logo','employees','owner_name','no_of_trucks');
 
-	        $employeename = json_encode($input['employees']);
+	        $employeeNames = json_encode($input['employees']);
 
 	        $franchises = User::create([
 	            'first_name' => $input['first_name'],
@@ -64,7 +64,7 @@ class FranchisesController extends Controller
 	            'address' => $input['address'],
 	            'role' => 'franchises',
 	            'logo' => $filename,
-	            'employees' => $employeename,
+	            'employees' => $employeeNames,
 	            'owner_name' => $input['owner_name'],
 	            'no_of_trucks' => $input['no_of_trucks'],
 	        ]);
@@ -89,6 +89,10 @@ class FranchisesController extends Controller
 	            'last_name' => 'required',
 	            'address' => 'required',
 	            'phone_number' => 'required',
+	            'role' => 'franchises',
+	            'employees' => 'required',
+	            'owner_name' => 'required',
+	            'no_of_trucks' => 'required',
 	        ]);	
 
 	          $file = $request->file('logo');
@@ -104,20 +108,23 @@ class FranchisesController extends Controller
               	  $input['logo'] = $request['oldimage'];
               }         
 
-	        $input = $request->only('id', 'first_name', 'last_name','phone_number','address', 'logo');
+	        $input = $request->only('id', 'first_name', 'last_name','phone_number','address', 'logo','employees','owner_name','no_of_trucks');
 
 	        if(!empty($file)){
 	       	 $input['logo'] = $input['logo']->getClientOriginalName();
 	    	}
+
+	    	$employeeNames = json_encode($input['employees']);
+	        $input['employees'] = $employeeNames;
 	        
-	        
-	    if(User::Where('id', $id)->update($input))
+	    	if(User::Where('id', $id)->update($input))
 	        	return redirect('/admin/franchises')->with('success', 'Franchises has been updated successfully.');
 	        else 
 	        	return redirect('/admin/franchises/edit/' . $id)->with('error', 'Error updating data.');
 	    } else {
 	    	$franchises = User::Where('id', $id)->first();
-	    	return view('admin/edit-franchises', compact('franchises'));
+	    	$employees = json_decode($franchises->employees, true);
+	    	return view('admin/edit-franchises', compact('franchises', 'employees'));
 	    }
 
     }
