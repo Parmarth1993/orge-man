@@ -32,6 +32,7 @@ class SalesController extends Controller
 	            'email' => 'required|string|email|max:255|unique:users',
 	            'address' => 'required',
 	            'phone_number' => 'required',
+	            'employees' => 'required',
 	        ]);	  
 
         	  // File upload		
@@ -48,7 +49,10 @@ class SalesController extends Controller
               	$filename = '';
               }
 
-	        $input = $request->only('first_name', 'last_name', 'email', 'user_name', 'password', 'phone_number','address', 'logo');
+	        $input = $request->only('first_name', 'last_name', 'email', 'user_name', 'password', 'phone_number','address', 'logo','employees');
+
+	        $employeename = json_encode($input['employees']);
+
 	        $sales = User::create([
 	            'first_name' => $input['first_name'],
 	            'last_name' => $input['last_name'],
@@ -59,6 +63,7 @@ class SalesController extends Controller
 	            'address' => $input['address'],
 	            'role' => 'sales',
 	            'logo' => $filename,
+	            'employees' => $employeename,
 	        ]);
 
 	        if($sales->save())

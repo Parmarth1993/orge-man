@@ -25,6 +25,9 @@ class DashboardController extends Controller
     			->join('users', 'assigned_leads.franchises', '=', 'users.id')
     			->orderBy('assigned_leads.created_at')
     			->select('assigned_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'quotes.service_needed as service_needed' , 'quotes.estimate as estimate', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email')
+                ->whereNotIn('lead_id', function($q){
+                        $q->select('lead_id')->from('completed_leads');
+                    })
     			->get();
     	else if($type == 'completed')
 

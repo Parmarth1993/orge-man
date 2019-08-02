@@ -21,7 +21,9 @@
                             <th>Last Name</th>
                             <th>Email</th>
                             <th>Phone</th>
-                            <th>Address</th>
+                            <th>Location</th>
+                            <th>Owner Name</th>
+                            <th>No. of trucks</th>
                             <th>Date</th>
                             <th>Actions</th>
                           </tr>
@@ -34,6 +36,8 @@
                                 <td>{{ $franchise->email }}</td>
                                 <td>{{ $franchise->phone_number }}</td>
                                 <td>{{ $franchise->address }}</td>
+                                <td>{{ $franchise->owner_name }}</td>
+                                <td>{{ $franchise->no_of_trucks }}</td>
                                 <td>{{ $franchise->created_at }}</td>
                                 <td>
                                     <a href="{{ url('/admin/franchises/edit/'. $franchise->id ) }}" class="btn btn-default btn-sm">

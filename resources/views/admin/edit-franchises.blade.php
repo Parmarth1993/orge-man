@@ -75,7 +75,7 @@
                              </div>
                         </div><br /><br />
                         <div class="form-group">
-                            <label for="address" class="col-md-4 control-label"><b>Address:</b></label>
+                            <label for="address" class="col-md-4 control-label"><b>Location:</b></label>
                              <div class="col-md-6">
                                 <textarea  class="form-control"  name="address" placeholder="Address"  required>{{ $franchises->address }}</textarea>
                                 @if ($errors->has('address'))

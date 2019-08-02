@@ -135,5 +135,24 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){      
+          var i=1;  
+
+          $('#add').click(function(){  
+               i++;  
+               $('#dynamic_field').append('<br /><div id="row'+i+'"><input  type="text" name="employees[]" placeholder="Enter employee name" class="form-control employee_list" required /><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div>');  
+          });
+
+
+          $(document).on('click', '.btn_remove', function(){  
+               var button_id = $(this).attr("id");   
+               $('#row'+button_id+'').remove();  
+          });  
+
+        });  
+    </script>
+
 </body>
 </html>

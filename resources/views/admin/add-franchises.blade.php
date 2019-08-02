@@ -53,7 +53,7 @@
                              </div>
                         </div><br /><br />
                         <div class="form-group">
-                            <label for="email" class="col-md-4 control-label"><b>User Name:</b></label>
+                            <label for="username" class="col-md-4 control-label"><b>User Name:</b></label>
                              <div class="col-md-6">
                                 <input type="text" name="user_name" placeholder="User Name" class="form-control" required value="" />
                                 @if ($errors->has('user_name'))
@@ -75,7 +75,7 @@
                              </div>
                         </div><br /><br />
                         <div class="form-group">
-                            <label for="address" class="col-md-4 control-label"><b>Address:</b></label>
+                            <label for="address" class="col-md-4 control-label"><b>Location:</b></label>
                              <div class="col-md-6">
                                 <textarea  class="form-control"  name="address" placeholder="Address" required></textarea>
                                 @if ($errors->has('address'))
@@ -93,6 +93,45 @@
                                   <?php echo Form::file('logo'); ?>
                                  <input type="hidden" name="password" value="{{ $password }}">
                                  <input type="hidden" name="role" value="franchises" >
+                             </div>
+                        </div><br /><br />
+
+                        <div class="form-group">
+                            <label for="owner_name" class="col-md-4 control-label"><b>Owner Name:</b></label>
+                             <div class="col-md-6">
+                                <input type="text" name="owner_name" placeholder="Enter Owner Name" class="form-control" required value="" />
+                                @if ($errors->has('owner_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('owner_name') }}</strong>
+                                    </span>
+                                @endif
+                             </div>
+                        </div><br /><br />
+
+                         <div class="form-group">
+                            <label for="no_of_trucks" class="col-md-4 control-label"><b>Number of Trucks:</b></label>
+                             <div class="col-md-6">
+                                <input type="text" name="no_of_trucks" placeholder="Number of Trucks" class="form-control" required value="" />
+                                @if ($errors->has('no_of_trucks'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('no_of_trucks') }}</strong>
+                                    </span>
+                                @endif
+                             </div>
+                        </div><br /><br />
+
+                        <div class="form-group">
+                            <label for="employees" class="col-md-4 control-label"><b>Employee Name:</b></label>
+                             <div class="col-md-4" id="dynamic_field">
+                                <input type="text" name="employees[]" placeholder="Enter Employee Name" class="form-control" required value="" />
+                                 @if ($errors->has('employees'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('employees') }}</strong>
+                                    </span>
+                                @endif
+                             </div>
+                             <div class="col-md-2">
+                                 <button type="button" name="add" id="add" class="btn btn-success"> Add Employee </button>
                              </div>
                         </div><br /><br />
                         

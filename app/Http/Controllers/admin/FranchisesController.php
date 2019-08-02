@@ -24,7 +24,6 @@ class FranchisesController extends Controller
         if ($request->isMethod('post')) {
 
 
-
         	$request->validate([
 	            'first_name' => 'required',
 	            'last_name' => 'required',
@@ -32,6 +31,9 @@ class FranchisesController extends Controller
 	            'email' => 'required|string|email|max:255|unique:users',
 	            'address' => 'required',
 	            'phone_number' => 'required',
+	            'employees' => 'required',
+	            'owner_name' => 'required',
+	            'no_of_trucks' => 'required',
 	        ]);	  
 
         	  // File upload		
@@ -48,7 +50,10 @@ class FranchisesController extends Controller
               	$filename = '';
               }
 
-	        $input = $request->only('first_name', 'last_name', 'email', 'user_name', 'password', 'phone_number','address', 'logo');
+	        $input = $request->only('first_name', 'last_name', 'email', 'user_name', 'password', 'phone_number','address', 'logo','employees','owner_name','no_of_trucks');
+
+	        $employeename = json_encode($input['employees']);
+
 	        $franchises = User::create([
 	            'first_name' => $input['first_name'],
 	            'last_name' => $input['last_name'],
@@ -59,6 +64,9 @@ class FranchisesController extends Controller
 	            'address' => $input['address'],
 	            'role' => 'franchises',
 	            'logo' => $filename,
+	            'employees' => $employeename,
+	            'owner_name' => $input['owner_name'],
+	            'no_of_trucks' => $input['no_of_trucks'],
 	        ]);
 
 	        if($franchises->save())

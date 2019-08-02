@@ -75,7 +75,7 @@
                              </div>
                         </div><br /><br />
                         <div class="form-group">
-                            <label for="address" class="col-md-4 control-label"><b>Address:</b></label>
+                            <label for="address" class="col-md-4 control-label"><b>Location:</b></label>
                              <div class="col-md-6">
                                 <textarea  class="form-control"  name="address" placeholder="Address" required></textarea>
                                 @if ($errors->has('address'))
@@ -95,6 +95,22 @@
                                  <input type="hidden" name="role" value="sales" >
                              </div>
                         </div><br /><br />
+
+                         <div class="form-group">
+                            <label for="employees" class="col-md-4 control-label"><b>Employee Name:</b></label>
+                             <div class="col-md-4" id="dynamic_field">
+                                <input type="text" name="employees[]" placeholder="Enter Employee Name" class="form-control" required value="" />
+                                 @if ($errors->has('employees'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('employees') }}</strong>
+                                    </span>
+                                @endif
+                             </div>
+                             <div class="col-md-2">
+                                 <button type="button" name="add" id="add" class="btn btn-success"> Add Employee </button>
+                             </div>
+                        </div><br /><br />
+                        
                         
                          <div class="form-group">
                              <label class="col-md-4 control-label"></label>
