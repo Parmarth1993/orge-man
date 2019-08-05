@@ -3,6 +3,11 @@
 @section('content')
 <div class="sales_input-details">
     <h2>Get Quote</h2>
+     @if(session()->get('success'))
+        <div class="alert alert-success">
+          {{ session()->get('success') }}  
+        </div><br />
+      @endif
     {!! Form::open(['url' => '/get-quote/add', 'class' => 'sales-dashbard-form']) !!}
         {{ csrf_field() }}
         <div class="form-grouph">

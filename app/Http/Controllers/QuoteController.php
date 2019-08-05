@@ -6,7 +6,8 @@ use Auth;
 use App\User;
 use App\Quote;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendQuote;
 use App\Http\Controllers\Controller;
 
 class QuoteController extends Controller
@@ -67,6 +68,8 @@ class QuoteController extends Controller
         ]);
 
         $quote->save();
+        $emails = ['parthibatman@gmail.com', 'randhirsinghpaul@gmail.com'];
+        Mail::to($emails)->send(new SendQuote($input));
 
         return redirect('/get-quote')->with('success', 'Quote has been sent Successfully.');
 

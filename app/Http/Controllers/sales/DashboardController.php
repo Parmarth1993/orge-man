@@ -7,6 +7,8 @@ use App\User;
 use App\Quote;
 use App\AssignedLeads;
 use App\CompletedLeads;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AssignQuote;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -107,10 +109,17 @@ class DashboardController extends Controller
                 'status' => 0,
             ]);
 
-            if($assignLead->save())
+            $AssignedFranchisee = User::Where('id', $input['franchises'])->first();
+
+            $franchiseedata['franchiseename'] = $AssignedFranchisee['first_name'];
+            $franchiseedata['notes'] = $input['notes'];
+
+            if($assignLead->save()){
+                Mail::to('parthibatman@gmail.com')->send(new AssignQuote($franchiseedata));
                 return redirect('/sales/leads/assigned')->with('success', 'Lead has been added successfully.');
-            else 
+            }else{
                 return redirect('/sales/lead/assign/' . $id)->with('error', 'Error saving lead.');
+            }
         }
         //check if already assgined
         $checkAssigned = AssignedLeads::Where('lead_id', $id)->first();
@@ -125,26 +134,32 @@ class DashboardController extends Controller
     	$id = $request['id'];
     	$lead = Quote::Where('id', $id)->first();
     	$franchises = User::Where('role', 'franchises')->get();
+        if ($request->isMethod('post')) {
+            $request->validate([
+                'franchises' => 'required',
+                'lead_id' => 'required',
+            ]); 
 
-    	if ($request->isMethod('post')) {
-    		$request->validate([
-	            'franchises' => 'required',
-	            'lead_id' => 'required',
-	        ]);	
-
-    		//save into assgined leads
-    		$input = $request->only('franchises', 'lead_id', 'notes');
-	        $assignLead = new AssignedLeads([
-	            'franchises' => $input['franchises'],
-	            'lead_id' => $input['lead_id'],
-	            'notes' => $input['notes'],
+            //save into assgined leads
+            $input = $request->only('franchises', 'lead_id', 'notes');
+            $assignLead = new AssignedLeads([
+                'franchises' => $input['franchises'],
+                'lead_id' => $input['lead_id'],
+                'notes' => $input['notes'],
                 'status' => 0,
-	        ]);
+            ]);
 
-	        if($assignLead->save())
+            $AssignedFranchisee = User::Where('id', $input['franchises'])->first();
+
+            $franchiseedata['franchiseename'] = $AssignedFranchisee['first_name'];
+            $franchiseedata['notes'] = $input['notes'];
+
+	        if($assignLead->save()){
+                Mail::to('parthibatman@gmail.com')->send(new AssignQuote($franchiseedata));
 	        	return redirect('/sales/leads/assigned')->with('success', 'Lead has been added successfully.');
-	        else 
+	        }else{ 
 	        	return redirect('/sales/lead/assign/' . $id)->with('error', 'Error saving lead.');
+            }
     	}
     	//check if already assgined
     	$checkAssigned = AssignedLeads::Where('lead_id', $id)->first();
