@@ -2,11 +2,13 @@
 
 @section('content')
 <h2>Sales Dashboard</h2>
-    <div class="search_value-frenchisee">
-        <input type="text" id="search-name" placeholder="search by name">
-        <input type="date" id="search-date" placeholder="search by date">
-        <input type="button" value="Search" id="clear-filter">
-    </div>
+    <form method="GET">
+      <div class="search_value-frenchisee">
+          <input type="text" id="search-name" name="name" placeholder="search by name" value="{{ $filterName }}">
+          <input type="date" id="search-date" name="date" placeholder="search by date" value="{{ $filterDate }}">
+          <input type="submit" value="Search" id="clear-filter">
+      </div>
+    </form>
     @if(session()->get('success'))
         <div class="alert alert-success">
           {{ session()->get('success') }}  

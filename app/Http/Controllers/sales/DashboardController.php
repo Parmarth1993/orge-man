@@ -21,6 +21,9 @@ class DashboardController extends Controller
 
     public function leads(Request $request) {
     	$type = $request['type'];
+        $filterName = ($request['name']) ? $request['name'] : '';
+        $filterDate = ($request['date']) ? $request['date'] : '';
+       
     	if($type == 'pending')
     		//get the list of assigned leads with lead/franchises details
     		$leads = AssignedLeads::join('quotes', 'assigned_leads.lead_id', '=', 'quotes.id')
@@ -30,6 +33,8 @@ class DashboardController extends Controller
                 ->whereNotIn('lead_id', function($q){
                         $q->select('lead_id')->from('completed_leads');
                     })
+                ->where('quotes.name', 'like', '%' . $filterName . '%')
+                ->where('quotes.date_of_job', 'like', '%' . $filterDate . '%')
     			->get();
     	else if($type == 'completed')
 
@@ -38,16 +43,19 @@ class DashboardController extends Controller
                 ->join('completed_leads', 'completed_leads.lead_id', '=', 'assigned_leads.lead_id')
                 ->orderBy('assigned_leads.created_at')
                 ->select('assigned_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'quotes.service_needed as service_needed' , 'quotes.estimate as estimate', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email')
-               // ->where('assigned_leads.franchises', '=', $user->id)
-               // ->where('completed_leads.franchises', '=', $user->id)
+                ->where('quotes.name', 'like', '%' . $filterName . '%')
+                ->where('quotes.date_of_job', 'like', '%' . $filterDate . '%')
             ->get();
         else    
         	//get the list of leads which are not assigned in assigned_leads table
     		$leads = Quote::whereNotIn('id', function($q){
 					    $q->select('lead_id')->from('assigned_leads');
-					})->get();
+					})
+                    ->where('name', 'like', '%' . $filterName . '%')
+                    ->where('date_of_job', 'like', '%' . $filterDate . '%')
+                    ->get();
 
-    	return view('sales/leads', compact('leads', 'type'));
+    	return view('sales/leads', compact('leads', 'type', 'filterName', 'filterDate'));
     }
 
 
@@ -114,7 +122,7 @@ class DashboardController extends Controller
             $AssignedFranchisee = User::Where('id', $input['franchises'])->first();
 
             $franchiseedata['franchiseename'] = $AssignedFranchisee['first_name'];
-            $franchiseedata['notes'] = $input['notes'];
+            $franchiseedata['notes'] = $input['additional_details'];
 
             if($assignLead->save()){
                 Mail::to($AssignedFranchisee['email'])->send(new AssignQuote($franchiseedata));
