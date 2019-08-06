@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\SendMailable;
+use App\Mail\ContactEmail;
 
 class ContactController extends Controller
 {
@@ -42,7 +42,7 @@ class ContactController extends Controller
 
         $contact->save();
         
-        Mail::to('parthibatman@gmail.com')->send(new SendMailable($input));
+        Mail::to('parthibatman@gmail.com')->send(new ContactEmail($input));
 
         return redirect('/contact')->with('success', 'Thank you for contacting us. We will revert back to you shortly.');
 

@@ -94,6 +94,39 @@
                $('#row'+button_id+'').remove();  
           });  
 
+
+          // $('#search-name').keyup(function(){
+ 
+          //     // Search by quote name
+          //     var text = $(this).val();
+             
+          //     // Hide all content class element
+          //     $('.card').hide();
+
+          //     // Search and show
+          //     $('.card:contains("'+text+'")').show();
+             
+          // }); 
+
+          // $('#search-date').change(function(){
+
+          //     // Search by quote date
+          //     var text = $(this).val();
+             
+          //     // Hide all content class element
+          //     $('.card').hide();
+
+          //     // Search and show
+          //     $('.card:contains("'+text+'")').show();
+             
+          // }); 
+
+          // $('#clear-filter').click(function(){
+          //       $('#search-date').val('');
+          //       $('#search-name').val('');
+          //       $('.card').show();
+          // });
+
         });  
     </script>
 </body>

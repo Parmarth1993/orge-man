@@ -3,9 +3,9 @@
 @section('content')
 <h2>Sales Dashboard</h2>
     <div class="search_value-frenchisee">
-        <input type="text" placeholder="search by name">
-        <input type="text" placeholder="search by date">
-        <!-- <input type="submit" value="Search"> -->
+        <input type="text" id="search-name" placeholder="search by name">
+        <input type="date" id="search-date" placeholder="search by date">
+        <input type="button" value="Search" id="clear-filter">
     </div>
     @if(session()->get('success'))
         <div class="alert alert-success">
@@ -140,4 +140,5 @@
             @endif
         </div>
     </div>
-@endsection               
+@endsection     
+

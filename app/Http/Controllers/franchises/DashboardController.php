@@ -8,6 +8,8 @@ use App\Quote;
 use App\AssignedLeads;
 use App\CompletedLeads;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CompleteQuote;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
@@ -102,10 +104,25 @@ class DashboardController extends Controller
             $input['invoice_image'] = $filename_invoice_image;
             $input['job_images'] = $filename_job_images;
             $lead = new CompletedLeads($input);
-            if($lead->save())
-            	return redirect('/franchises/dashboard')->with('success', 'Order has been completed.');
-        	else
-        		return redirect('lead/complete/' . $id)->with('error', 'Error completing order.');
+
+            //Get sales user id 
+            $salesdata = AssignedLeads::Where('lead_id', $input['lead_id'])->first();
+
+            $salesdataid = User::Where('id', $salesdata['sales_id'])->first();
+        
+            $emails = ['parthibatman@gmail.com', $salesdataid['email']];
+
+            $leaddata = Quote::Where('id', $input['lead_id'])->first();
+
+            if($lead->save()){
+
+                Mail::to($emails)->send(new CompleteQuote($leaddata['name']));
+
+            	return redirect('/franchises/leads/completed')->with('success', 'Order has been completed.');
+            }
+        	else{
+        		return redirect('/franchises/leads/completed' . $id)->with('error', 'Error completing order.');
+            }
     	}
     	return view('franchises/complete-lead', compact('lead', 'user'));
     }

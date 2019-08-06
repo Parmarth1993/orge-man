@@ -8,6 +8,6 @@ class AssignedLeads  extends Model
 {
 
     protected $fillable = [
-        'lead_id','franchises','notes','status'
+        'sales_id','lead_id','franchises','notes','status'
     ];
 }

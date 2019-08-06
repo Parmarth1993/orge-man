@@ -15,8 +15,10 @@ class CreateTableAssignedLeads extends Migration
     {
         Schema::create('assigned_leads', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('sales_id')->unsigned();
             $table->integer('lead_id')->unsigned();
             $table->integer('franchises')->unsigned();
+            $table->foreign('sales_id')->references('id')->on('users');
             $table->foreign('lead_id')->references('id')->on('quotes');
             $table->foreign('franchises')->references('id')->on('users');
             $table->string('notes')->nullable();

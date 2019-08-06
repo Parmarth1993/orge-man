@@ -56,7 +56,8 @@ class DashboardController extends Controller
          return view('sales/assign-new-lead', compact('leads', 'franchises'));
     }
     public function assignNewLead(Request $request) {
-
+         $user = Auth::user();
+         $userid = $user->id;
          $request->validate([
           'name'=>'required',
           'email'=> 'required',
@@ -103,6 +104,7 @@ class DashboardController extends Controller
             $input = $request->only('franchises','additional_details');
 
             $assignLead = new AssignedLeads([
+                'sales_id' => $userid,
                 'franchises' => $input['franchises'],
                 'lead_id' => $id,
                 'notes' => $input['additional_details'],
@@ -115,7 +117,7 @@ class DashboardController extends Controller
             $franchiseedata['notes'] = $input['notes'];
 
             if($assignLead->save()){
-                Mail::to('parthibatman@gmail.com')->send(new AssignQuote($franchiseedata));
+                Mail::to($AssignedFranchisee['email'])->send(new AssignQuote($franchiseedata));
                 return redirect('/sales/leads/assigned')->with('success', 'Lead has been added successfully.');
             }else{
                 return redirect('/sales/lead/assign/' . $id)->with('error', 'Error saving lead.');
@@ -131,6 +133,10 @@ class DashboardController extends Controller
     
     }
     public function assignLead(Request $request) {
+
+        $user = Auth::user();
+        $userid = $user->id;
+
     	$id = $request['id'];
     	$lead = Quote::Where('id', $id)->first();
     	$franchises = User::Where('role', 'franchises')->get();
@@ -143,6 +149,7 @@ class DashboardController extends Controller
             //save into assgined leads
             $input = $request->only('franchises', 'lead_id', 'notes');
             $assignLead = new AssignedLeads([
+                'sales_id' => $userid,
                 'franchises' => $input['franchises'],
                 'lead_id' => $input['lead_id'],
                 'notes' => $input['notes'],
@@ -155,7 +162,7 @@ class DashboardController extends Controller
             $franchiseedata['notes'] = $input['notes'];
 
 	        if($assignLead->save()){
-                Mail::to('parthibatman@gmail.com')->send(new AssignQuote($franchiseedata));
+                 Mail::to($AssignedFranchisee['email'])->send(new AssignQuote($franchiseedata));
 	        	return redirect('/sales/leads/assigned')->with('success', 'Lead has been added successfully.');
 	        }else{ 
 	        	return redirect('/sales/lead/assign/' . $id)->with('error', 'Error saving lead.');
