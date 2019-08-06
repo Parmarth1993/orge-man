@@ -65,6 +65,9 @@ Author: Pawan Yadav
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">login</a>
+                </li>
             </ul>
             
             <span class="header-right-btn ml-2"><a class="btn btn-outline" data-toggle="modal" aria-pressed="false" data-target="#login-modal">Request a Quote</a></span>
