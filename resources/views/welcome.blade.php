@@ -56,7 +56,7 @@ Author: Pawan Yadav
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="#services">Services</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Employment</a>
@@ -200,7 +200,7 @@ Author: Pawan Yadav
                 {!! Form::open(['url' => '/get-quote/add', 'class' => 'request-form-grid']) !!}
                     {{ csrf_field() }}
                 <!-- <form action="#" method="post" class="request-form-grid"> -->
-                    <div class="row">
+                   <div class="row">
                         <div class="col-md-4 pr-md-1">
                             <div class="form-group">
                                 <label>Name</label>
@@ -222,63 +222,58 @@ Author: Pawan Yadav
                     </div>
                     
                     <div class="row">
-                        <div class="col-md-6 pr-md-1">
+                        <div class="col-md-4 pr-md-1">
+                          <div class="form-group">
+                            <label for="date_of_job" >Date of Job</label>
+                                <input type="date" name="date_of_job" class="form-control" required value="" />
+                          </div>
+                         </div> 
+                        <div class="col-md-4 px-md-1">
                             <div class="form-group">
-                                <label>Departure Address</label>
-                                <input class="form-control" type="text" placeholder="" name="departure_address" required="">
+                               <label for="address" >Departure Address</label>
+                               <input type="text" class="form-control" name="departure_address" placeholder="Departure Address">
                             </div>
                         </div>
-                        <div class="col-md-6 pl-md-1">
+                        <div class="col-md-4 pl-md-1">
                             <div class="form-group">
-                                <label>Delivery Address</label>
-                                <input class="form-control" type="text" placeholder="" name="delivery_address" required="">
+                                <label for="address" >Delivery Address</label>
+                                <input type="text"  class="form-control"  name="delivery_address" placeholder="Please enter your address" required>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="form-group row">
-                    <div class="col-md-4">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="customRadio" name="example" value="Residential">
-                            <label class="custom-control-label" for="customRadio">Residential</label>
+
+                    <div class="row">
+                        <div class="col-md-4 pr-md-1">
+                          <div class="form-group">
+                            <label for="date_of_job" >Service Needed</label>
+                                <select name="service_needed" class="form-control" required  />
+                                    <option value="choose_all_that_apply">CHOOSE ALL THAT APPLY</option>
+                                </select>
+                          </div>
+                         </div> 
+                        <div class="col-md-4 px-md-1">
+                            <div class="form-group">
+                               <label for="location" >Select Location</label>
+                               <input type="text" name="location" placeholder="Please select location" class="form-control" required value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 pl-md-1">
+                            <div class="form-group">
+                                 <label for="estimate" >Estimate Needed</label>
+                                 <input type="text" name="estimate" placeholder="Please select estimate" class="form-control" required value="" />
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="col-md-4">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="customRadio2" name="example" value="Commercial">
-                            <label class="custom-control-label" for="customRadio2">Commercial</label>
+
+                    <div class="row">
+
+                        <div class="col-md-12 pr-md-1">
+                            <div class="form-group">
+                                  <label for="additional_details" >Additional Details</label>
+                                  <textarea class="form-control"  name="additional_details" placeholder="Please enter your additional details" required></textarea>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="customRadio3" name="example" value="Junk Removal">
-                            <label class="custom-control-label" for="customRadio3">Junk Removal</label>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="customRadio4" name="example" value="Furniture Delivery">
-                            <label class="custom-control-label" for="customRadio4">Furniture Delivery</label>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="customRadio5" name="example" value="Labor Services">
-                            <label class="custom-control-label" for="customRadio5">Labor Services</label>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="customRadio6" name="example" value="Pack & Load Service">
-                            <label class="custom-control-label" for="customRadio6">Pack & Load Service</label>
-                        </div>
-                    </div>
-                      
+
                     </div>
                     
                     <div class="form-group mb-0">
@@ -472,64 +467,60 @@ Author: Pawan Yadav
                     </div>
                     
                     <div class="row">
-                        <div class="col-md-6 pr-md-1">
+                        <div class="col-md-4 pr-md-1">
+                          <div class="form-group">
+                            <label for="date_of_job" >Date of Job</label>
+                                <input type="date" name="date_of_job" class="form-control" required value="" />
+                          </div>
+                         </div> 
+                        <div class="col-md-4 px-md-1">
                             <div class="form-group">
-                                <label>Departure Address</label>
-                                <input class="form-control" type="text" placeholder="" name="departureaddress" required="">
+                               <label for="address" >Departure Address</label>
+                               <input type="text" class="form-control" name="departure_address" placeholder="Departure Address">
                             </div>
                         </div>
-                        <div class="col-md-6 pl-md-1">
+                        <div class="col-md-4 pl-md-1">
                             <div class="form-group">
-                                <label>Delivery Address</label>
-                                <input class="form-control" type="text" placeholder="" name="departure_address" required="">
+                                <label for="address" >Delivery Address</label>
+                                <input type="text"  class="form-control"  name="delivery_address" placeholder="Please enter your address" required>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="form-group row">
-                    <div class="col-md-4">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="customRadio7" name="example" value="Residential">
-                            <label class="custom-control-label" for="customRadio7">Residential</label>
+
+                    <div class="row">
+                        <div class="col-md-4 pr-md-1">
+                          <div class="form-group">
+                            <label for="date_of_job" >Service Needed</label>
+                                <select name="service_needed" class="form-control" required  />
+                                    <option value="choose_all_that_apply">CHOOSE ALL THAT APPLY</option>
+                                </select>
+                          </div>
+                         </div> 
+                        <div class="col-md-4 px-md-1">
+                            <div class="form-group">
+                               <label for="location" >Select Location</label>
+                               <input type="text" name="location" placeholder="Please select location" class="form-control" required value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 pl-md-1">
+                            <div class="form-group">
+                                 <label for="estimate" >Estimate Needed</label>
+                                 <input type="text" name="estimate" placeholder="Please select estimate" class="form-control" required value="" />
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="col-md-4">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="customRadio8" name="example" value="Commercial">
-                            <label class="custom-control-label" for="customRadio8">Commercial</label>
+
+                    <div class="row">
+
+                        <div class="col-md-12 pr-md-1">
+                            <div class="form-group">
+                                  <label for="additional_details" >Additional Details</label>
+                                  <textarea class="form-control"  name="additional_details" placeholder="Please enter your additional details" required></textarea>
+                            </div>
                         </div>
+
                     </div>
-                    
-                    <div class="col-md-4">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="customRadio9" name="example" value="Junk Removal">
-                            <label class="custom-control-label" for="customRadio9">Junk Removal</label>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="customRadio10" name="example" value="Furniture Delivery">
-                            <label class="custom-control-label" for="customRadio10">Furniture Delivery</label>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="customRadio11" name="example" value="Labor Services">
-                            <label class="custom-control-label" for="customRadio11">Labor Services</label>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="customRadio12" name="example" value="Pack & Load Service">
-                            <label class="custom-control-label" for="customRadio12">Pack & Load Service</label>
-                        </div>
-                    </div>
-                      
-                    </div>
+
                     
                     <div class="form-group mb-0">
                         <button type="submit" class="btn btn-default btn-block">Request a Quote</button>
