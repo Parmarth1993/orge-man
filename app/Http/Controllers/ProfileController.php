@@ -25,7 +25,10 @@ class ProfileController extends Controller
         /**
          * Passing the user data to profile view
          */
-        return view('profile', compact('user'));
+        if($user->role === 'admin')
+            return view('admin/profile', compact('user'));
+        else
+            return view('profile', compact('user'));
 
     }
 

@@ -62,7 +62,11 @@
                     <a class="nav-link" href="/contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">login</a>
+                    @guest
+                        <a class="nav-link" href="/login">login</a>
+                    @else
+                        <a class="nav-link" href="/profile">Dashboard</a>
+                    @endguest
                 </li>
             </ul>
             
