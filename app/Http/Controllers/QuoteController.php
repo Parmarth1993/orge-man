@@ -51,7 +51,7 @@ class QuoteController extends Controller
         ]);
  
 
-        $input = $request->only('name','email','phone_number','date_of_job','delivery_address','departure_address','service_needed','location','estimate','additional_details');
+        $input = $request->only('name','email','phone_number','date_of_job','delivery_address','departure_address','service_needed','formtype','location','estimate','additional_details');
 
         //echo "<pre>";print_r($input);die;
         $quote = new Quote([
@@ -67,11 +67,17 @@ class QuoteController extends Controller
             'additional_details' => $input['additional_details'],
         ]);
 
-        $quote->save();
-        $emails = ['parthibatman@gmail.com', 'randhirsinghpaul@gmail.com'];
-        Mail::to($emails)->send(new SendQuote($input));
+          $quote->save();
 
-        return redirect('/get-quote')->with('success', 'Quote has been sent Successfully.');
+        if($input['formtype'] == 'home'){
+            echo json_encode(array('success' => 'true','message' => 'Quote Sent Successfully.'));
+        }else{
+          
+          $emails = ['parthibatman@gmail.com', 'randhirsinghpaul@gmail.com'];
+          Mail::to($emails)->send(new SendQuote($input));
+
+          return redirect('/get-quote')->with('success', 'Quote has been sent Successfully.');
+        }
 
     }
 

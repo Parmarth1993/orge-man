@@ -1,7 +1,3 @@
-<!--
-Author: Pawan Yadav
--->
-
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -41,7 +37,7 @@ Author: Pawan Yadav
     <nav class="navbar navbar-expand-lg fixed-top navbar-expand-lg navbar-light navbar-fixed-top">
 
         <span class="logo-grid">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="">
             <img src="{{ asset('images/home/orge-man-movers-logo.png') }}" class="img-fluid" />
         </a></span>
         
@@ -200,8 +196,11 @@ Author: Pawan Yadav
         <div class="row">
             <div class="col-md-8 col-lg-8 pr-md-5">
                 <h3 class="title-heading-default mb-4 pb-md-1">Receive a quote in 24 hours or less</h3>
-                {!! Form::open(['url' => '/get-quote/add', 'class' => 'request-form-grid']) !!}
-                    {{ csrf_field() }}
+                {!! Form::open(['url' => '/get-quote/add','id' => 'quote_form_home', 'class' => 'request-form-grid']) !!}
+                 <input type="hidden"  class="form-control"  name="formtype" value="home">
+                 <div class="alert alert-success" id="sentquote" style="display:none;">
+                    
+                 </div>
                 <!-- <form action="#" method="post" class="request-form-grid"> -->
                    <div class="row">
                         <div class="col-md-4 pr-md-1">
@@ -280,7 +279,7 @@ Author: Pawan Yadav
                     </div>
                     
                     <div class="form-group mb-0">
-                        <button type="submit" class="btn btn-default btn-block">Request a Quote</button>
+                        <button type="button" id="quotesubmitform" class="btn btn-default btn-block">Request a Quote</button>
                     </div>
                 {!! Form::close() !!}
             </div>
@@ -446,8 +445,10 @@ Author: Pawan Yadav
             </div>
             <div class="col-lg-9">
                 <h3 class="title-heading-default mb-4 pb-md-1">Receive a quote in 24 hours or less</h3>
-                {!! Form::open(['url' => '/get-quote/add', 'class' => 'request-form-grid']) !!}
+                {!! Form::open(['url' => '/get-quote/add', 'id' => 'quote_form_home_footer','class' => 'request-form-grid']) !!}
                     {{ csrf_field() }}
+                    <input type="hidden"  class="form-control"  name="formtype" value="home">
+                    <div class="alert alert-success" id="sentquote_footer" style="display:none;"></div>
                     <div class="row">
                         <div class="col-md-4 pr-md-1">
                             <div class="form-group">
@@ -526,7 +527,7 @@ Author: Pawan Yadav
 
                     
                     <div class="form-group mb-0">
-                        <button type="submit" class="btn btn-default btn-block">Request a Quote</button>
+                        <button type="button" id="quotesubmitform_footer" class="btn btn-default btn-block">Request a Quote</button>
                     </div>
                 {!! Form::close() !!}
             </div>
@@ -783,6 +784,57 @@ Author: Pawan Yadav
                 easingType: 'linear' 
             };
             */
+
+           $('#quotesubmitform').click(function(){
+                 $('#quotesubmitform').val('Please Wait...');
+                 $.ajax({
+                  url: "/get-quote/add",
+                  type: "post",
+                  data: $('#quote_form_home').serialize() ,
+                  success: function (response) {
+                    var response = JSON.parse(response);
+                    $('#sentquote').html(response.message);
+                    $('#sentquote').show();
+                    $('#quotesubmitform').val('Request a Quote');
+                    $('#quote_form_home')[0].reset();
+                    setTimeout(function(){
+                        $('#sentquote').hide();
+                    }, 5000);
+                  },
+                  error: function(jqXHR, textStatus, errorThrown) {
+                     console.log(textStatus, errorThrown);
+                  }
+              });
+
+                //$('.card').show();
+          });
+
+            $('#quotesubmitform_footer').click(function(){
+                 $('#quotesubmitform_footer').val('Please Wait...');
+                 $.ajax({
+                  url: "/get-quote/add",
+                  type: "post",
+                  data: $('#quote_form_home_footer').serialize() ,
+                  success: function (response) {
+                    var response = JSON.parse(response);
+                    $('#sentquote_footer').html(response.message);
+                    $('#sentquote_footer').show();
+                    $('#quotesubmitform_footer').val('Request a Quote');
+                    $('#quote_form_home_footer')[0].reset();
+                    setTimeout(function(){
+                        $('#sentquote_footer').hide();
+                    }, 5000);
+                  },
+                  error: function(jqXHR, textStatus, errorThrown) {
+                     console.log(textStatus, errorThrown);
+                  }
+              });
+
+                //$('.card').show();
+          });
+
+
+
             $().UItoTop({
                 easingType: 'easeOutQuart'
             });

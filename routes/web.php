@@ -31,6 +31,7 @@ Route::group(array('prefix'=> 'admin', 'middleware' => ['auth']), function () {
 	//Admin
 	Route::get('dashboard', 'admin\DashboardController@index');
 	Route::get('quotes', 'admin\QuotesController@list');
+	Route::get('quotes/{type}', 'admin\QuotesController@upcoming');
 	Route::get('quotes/delete/{id}', 'admin\QuotesController@delete');
 	//Franchises
 	Route::get('franchises', 'admin\FranchisesController@list');

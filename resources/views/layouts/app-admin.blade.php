@@ -59,6 +59,16 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="{{ url('/admin/quotes/upcoming') }}">
+                                Upcoming Leads
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/admin/quotes/completed') }}">
+                                Completed Leads
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ url('/admin/sales') }}">
                                 Sales
                                 </a>

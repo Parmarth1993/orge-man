@@ -95,37 +95,72 @@
           });  
 
 
-          // $('#search-name').keyup(function(){
+          $('#search-name').keyup(function(){
  
-          //     // Search by quote name
-          //     var text = $(this).val();
+              // Search by quote name
+              var text = $(this).val();
              
-          //     // Hide all content class element
-          //     $('.card').hide();
+              // Filter quote by name
+               $.ajax({
+                  url: "",
+                  type: "get",
+                  data: {name:text} ,
+                  success: function (response) {
 
-          //     // Search and show
-          //     $('.card:contains("'+text+'")').show();
+                   $('.card').remove();
+                   $('#accordion').append($('#accordion .card', response)); 
+
+                  },
+                  error: function(jqXHR, textStatus, errorThrown) {
+                     console.log(textStatus, errorThrown);
+                  }
+              });
              
-          // }); 
+          }); 
 
-          // $('#search-date').change(function(){
+          $('#search-date').change(function(){
 
-          //     // Search by quote date
-          //     var text = $(this).val();
+              // Search by quote date
+              var text = $(this).val();
              
-          //     // Hide all content class element
-          //     $('.card').hide();
+              $.ajax({
+                  url: "",
+                  type: "get",
+                  data: {date:text} ,
+                  success: function (response) {
+                    
+                   $('.card').remove();
+                   $('#accordion').append($('#accordion .card', response)); 
 
-          //     // Search and show
-          //     $('.card:contains("'+text+'")').show();
+                  },
+                  error: function(jqXHR, textStatus, errorThrown) {
+                     console.log(textStatus, errorThrown);
+                  }
+              });
              
-          // }); 
+          }); 
 
-          // $('#clear-filter').click(function(){
-          //       $('#search-date').val('');
-          //       $('#search-name').val('');
-          //       $('.card').show();
-          // });
+          $('#clear-filter').click(function(){
+                $('#search-date').val('');
+                $('#search-name').val('');
+
+                 $.ajax({
+                  url: "",
+                  type: "get",
+                  data: {name:'',date:''} ,
+                  success: function (response) {
+                    
+                   $('.card').remove();
+                   $('#accordion').append($('#accordion .card', response)); 
+
+                  },
+                  error: function(jqXHR, textStatus, errorThrown) {
+                     console.log(textStatus, errorThrown);
+                  }
+              });
+
+                //$('.card').show();
+          });
 
         });  
     </script>

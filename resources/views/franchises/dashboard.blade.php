@@ -23,7 +23,7 @@
                              <h4>{{ $lead->quote_name }}</h4>
                              <span>Phone No: <a href="tel:{{ $lead->quote_phone_number }}">{{ $lead->quote_phone_number }}</a></span>
                              <span>Email: <a href="mailto: {{ $lead->quote_email }}"> {{ $lead->quote_email }}</a></span>
-                             <span>Date of Move: <span>{{ $lead->created_at }}</span></span>
+                             <span>Date of Move: <span>{{ $lead->dateofjob }}</span></span>
                              <span>Assigned Franchisee: <span>{{ $lead->franchises_first_name }} {{ $lead->franchises_last_name }} </span></span>
                              <span>Franchisee Email: <span>{{ $lead->franchises_email }}</span></span>
                           </div>
