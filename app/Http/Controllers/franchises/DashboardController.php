@@ -115,9 +115,9 @@ class DashboardController extends Controller
             $leaddata = Quote::Where('id', $input['lead_id'])->first();
 
             if($lead->save()){
-
-                Mail::to($emails)->send(new CompleteQuote($leaddata['name']));
-
+                if(!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'localhost'))){
+                    Mail::to($emails)->send(new CompleteQuote($leaddata['name']));
+                }
             	return redirect('/franchises/leads/completed')->with('success', 'Order has been completed.');
             }
         	else{

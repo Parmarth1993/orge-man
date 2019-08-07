@@ -42,7 +42,7 @@
                                 <td>{{ $lead->quote_departure_address }}</td>
                                 <td>{{ $lead->created_at }}</td>
                                 <td>
-                                    <a href="javascript:void(0);" class="btn btn-default btn-sm">
+                                    <a href="/admin/quotes/completed/view/{{ $lead->id }}" class="btn btn-default btn-sm">
                                         <i class="glyphicon glyphicon-pencil"></i>
                                     </a>
                                    <!--  <a onclick="return confirm('Are you sure?')" href="{{ url('/admin/quotes/delete/'. $lead->id ) }}"  class="btn btn-default btn-sm">

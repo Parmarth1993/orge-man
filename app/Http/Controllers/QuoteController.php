@@ -74,8 +74,9 @@ class QuoteController extends Controller
         }else{
           
           $emails = ['parthibatman@gmail.com', 'randhirsinghpaul@gmail.com'];
-          Mail::to($emails)->send(new SendQuote($input));
-
+          if(!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'localhost'))){
+             Mail::to($emails)->send(new SendQuote($input));
+          }
           return redirect('/get-quote')->with('success', 'Quote has been sent Successfully.');
         }
 

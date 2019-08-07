@@ -72,4 +72,18 @@ class QuotesController extends Controller
         $quotes = Quote::Where('id', $id)->delete();
         return redirect('/admin/quotes')->with('success', 'Quote has been deleted successfully.');
     }
+
+    public function viewComplete(Request $request) {
+        $id = $request['id'];
+        $quote = CompletedLeads::join('quotes', 'completed_leads.lead_id', '=', 'quotes.id')
+                ->join('users', 'completed_leads.franchises', '=', 'users.id')
+                ->where('completed_leads.id', $id)->first();
+        $supplies = json_decode($quote->supplies, true);
+        // echo "<pre>";
+        // echo sizeOf($supplies);
+        // print_r($supplies);
+        // echo "</pre>";
+        // die();
+        return view('admin/view-quote-completed', compact('quote', 'supplies'));        
+    }
 }

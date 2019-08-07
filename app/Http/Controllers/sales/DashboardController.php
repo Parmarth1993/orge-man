@@ -126,7 +126,9 @@ class DashboardController extends Controller
             $franchiseedata['notes'] = $input['additional_details'];
 
             if($assignLead->save()){
-                Mail::to($AssignedFranchisee['email'])->send(new AssignQuote($franchiseedata));
+                if(!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'localhost'))){
+                    Mail::to($AssignedFranchisee['email'])->send(new AssignQuote($franchiseedata));
+                }
                 return redirect('/sales/leads/assigned')->with('success', 'Lead has been added successfully.');
             }else{
                 return redirect('/sales/lead/assign/' . $id)->with('error', 'Error saving lead.');
@@ -171,7 +173,9 @@ class DashboardController extends Controller
             $franchiseedata['notes'] = $input['notes'];
 
 	        if($assignLead->save()){
-                 Mail::to($AssignedFranchisee['email'])->send(new AssignQuote($franchiseedata));
+                if(!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'localhost'))){
+                    Mail::to($AssignedFranchisee['email'])->send(new AssignQuote($franchiseedata));
+                }
 	        	return redirect('/sales/leads/assigned')->with('success', 'Lead has been added successfully.');
 	        }else{ 
 	        	return redirect('/sales/lead/assign/' . $id)->with('error', 'Error saving lead.');

@@ -12,136 +12,153 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .navbar-fixed-left {
+          width: 200px;
+          position: fixed;
+          border-radius: 0;
+          height: 100%;
+        }
+
+        .navbar-fixed-left .navbar-nav > li {
+          float: none;  /* Cancel default li float: left */
+          width: 150px;
+        }
+        .navbar-fixed-left .navbar-nav > li a{
+            color: #fff;
+            font-weight: 600;
+        }
+        .navbar-fixed-left .navbar-nav > li.dropdown.open .dropdown-menu li a{
+            color: #000;
+            font-weight: 600;
+        }
+        .navbar-fixed-left .navbar-nav > li.dropdown.open .dropdown-menu {
+            z-index: 1000;
+        }
+        .navbar-fixed-left + .container {
+          padding-left: 90px;
+        }
+
+        /* On using dropdown menu (To right shift popuped) */
+        .navbar-fixed-left .navbar-nav > li > .dropdown-menu {
+          margin-top: -50px;
+          margin-left: 140px;
+        }
+        ul.nav.navbar-nav {
+            padding-top: 50px;
+        }
+        </style>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+    <div class="navbar navbar-inverse navbar-fixed-left">
+        
+        <a class="navbar-brand" href="{{ url('/') }}">
+            <img src="{{ asset('images/dashboard.png') }}" width="75">
+        </a>
+      <ul class="nav navbar-nav">
+       @guest
+            <li><a href="{{ route('login') }}">Login</a></li>
+            <li><a href="{{ route('register') }}">Register</a></li>
+            <li><a href="{{ url('/contact') }}">Contact Us</a></li>
+        @else
+            @if (Auth::user()->role == 'admin')
+            <li>
+                <a href="{{ url('/admin/franchises') }}">
+                Franchise
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/admin/sales') }}">
+                Sales
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/admin/quotes') }}">
+                Quotes
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/admin/quotes/upcoming') }}">
+                Upcoming Leads
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/admin/quotes/completed') }}">
+                Completed Leads
+                </a>
+            </li>
+            @endif
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Orge Man') }}
+            @if (Auth::user()->role == 'sales')
+                <li>
+                    <a href="{{ url('/sales/leads/new') }}">
+                    New Entries
                     </a>
-                </div>
+                </li>
+                <li>
+                    <a href="{{ url('/sales/leads/pending') }}">
+                    Pending Entries
+                    </a>
+                </li>
+            @endif
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+            @if (Auth::user()->role == 'franchises')
+                <li>
+                    <a href="{{ url('/franchises/leads/new') }}">
+                    New Orders
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/franchises/leads/upcoming') }}">
+                    Upcoming Orders
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/franchises/leads/completed') }}">
+                    Completed Order
+                    </a>
+                </li>
+            @endif
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                            <li><a href="{{ url('/contact') }}">Contact Us</a></li>
-                        @else
-                            @if (Auth::user()->role == 'admin')
-                            <li>
-                                <a href="{{ url('/admin/franchises') }}">
-                                Franchise
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ url('/admin/quotes') }}">
-                                Quotes
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ url('/admin/quotes/upcoming') }}">
-                                Upcoming Leads
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ url('/admin/quotes/completed') }}">
-                                Completed Leads
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ url('/admin/sales') }}">
-                                Sales
-                                </a>
-                            </li>
-                            @endif
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                    Hi, {{ Auth::user()->first_name }} <span class="caret"></span>
+                </a>
 
-                            @if (Auth::user()->role == 'sales')
-                                <!-- <li>
-                                    <a href="{{ url('/sales/lead/assign-new-lead') }}">
-                                    New Lead Entry
-                                    </a>
-                                </li> -->
-                                <li>
-                                    <a href="{{ url('/sales/leads/new') }}">
-                                    New Entries
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('/sales/leads/pending') }}">
-                                    Pending Entries
-                                    </a>
-                                </li>
-                            @endif
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="{{ url('/profile') }}">
+                            My Profile
+                        </a>
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
 
-                            @if (Auth::user()->role == 'franchises')
-                                <li>
-                                    <a href="{{ url('/franchises/leads/new') }}">
-                                    New Orders
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('/franchises/leads/upcoming') }}">
-                                    Upcoming Orders
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('/franchises/leads/completed') }}">
-                                    Completed Order
-                                    </a>
-                                </li>
-                            @endif
-
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    Hi, {{ Auth::user()->first_name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ url('/profile') }}">
-                                            My Profile
-                                        </a>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>                                    
-                                </ul>
-                            </li>
-                            
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        @yield('content')
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>                                    
+                </ul>
+            </li>
+            
+       @endguest
+      </ul>
     </div>
+    <div class="container top-div">
+       @yield('content')
+    </div>
+    <!-- <div id="app" > -->
+        <!-- <div id="mySidenav" class="sidenav">
+          <a href="#">About</a>
+          <a href="#">Services</a>
+          <a href="#">Clients</a>
+          <a href="#">Contact</a>
+        </div>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
+        
+    <!-- </div> -->
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -163,6 +180,5 @@
 
         });  
     </script>
-
 </body>
 </html>
