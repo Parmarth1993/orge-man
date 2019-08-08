@@ -47,6 +47,9 @@
         ul.nav.navbar-nav {
             padding-top: 50px;
         }
+        .panel{
+            margin-top:20px;
+        }
         </style>
 </head>
 <body>
@@ -85,6 +88,11 @@
             <li>
                 <a href="{{ url('/admin/quotes/completed') }}">
                 Completed Leads
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/admin/reports') }}">
+                Reports
                 </a>
             </li>
             @endif

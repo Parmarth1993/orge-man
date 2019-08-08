@@ -10,6 +10,7 @@
       @endif
     {!! Form::open(['url' => '/get-quote/add', 'class' => 'sales-dashbard-form']) !!}
         {{ csrf_field() }}
+        <input type="hidden"  class="form-control"  name="formtype" value="dashboard">
         <div class="form-grouph">
             <label for="name" >Name</label>
                 <input type="text" name="name" placeholder="Please enter your name" class="form-control" required value="" />
