@@ -71,14 +71,15 @@ class FranchisesController extends Controller
 	            'no_of_trucks' => $input['no_of_trucks'],
 	        ]);
 
-	        if($franchises->save())
+	        if($franchises->save()){
 	        	if(!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'localhost'))){
 	        		$input['SERVER'] = $_SERVER['REMOTE_ADDR'];
                     Mail::to($input['email'])->send(new RegisterUser($input));
                 }
 	        	return redirect('/admin/franchises')->with('success', 'Franchises has been added successfully.');
-	        else 
+	        }else{ 
 	        	return redirect('/admin/add-franchises')->with('error', 'Error saving Franchises.');
+	        }	
 	    } else {
 	    	$password = rand();
         	return view('admin/add-franchises', compact('password'));

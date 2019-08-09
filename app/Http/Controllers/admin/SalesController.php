@@ -68,14 +68,15 @@ class SalesController extends Controller
 	            'employees' => $employeename,
 	        ]);
 
-	        if($sales->save())
+	        if($sales->save()){
 	        	if(!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'localhost'))){
 	        		$input['SERVER'] = $_SERVER['REMOTE_ADDR'];
                     Mail::to($input['email'])->send(new RegisterUser($input));
                 }
 	        	return redirect('/admin/sales')->with('success', 'Sales has been added successfully.');
-	        else 
+	        }else{ 
 	        	return redirect('/admin/add-sales')->with('error', 'Error saving sales.');
+	        }
 	    } else {
 	    	$password = rand();
         	return view('admin/add-sales', compact('password'));
