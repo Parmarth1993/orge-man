@@ -85,7 +85,7 @@
 
           $('#addSupply').click(function(){  
                i++;  
-               $('#supplies').append('<div class="form-grouph"><label for="supplies_sold" >Supplies Sold</label><select  name="supplies[sold][]" class="input-sales-select" required/><option value="">Choose from the supplies below</option><option value="supply">Test Supply</option></select></div><div class="form-grouph"><label for="quantity" class="control-label"><br></label><input type="text" name="supplies[quantity][]" class="form-control" placeholder="Quantity" required /></div><div class="form-grouph"><label for="price" class="control-label"><br></label><input type="text" name="supplies[price][]" class="form-control" placeholder="Price" required /></div>');  
+               $('#supplies').append('<div class="form-grouph"><label for="supplies_sold" >Supplies Sold</label><select  name="supplies[sold][]" class="input-sales-select" required><option value="">Choose from the supplies below</option><option value="supply">Test Supply</option></select></div><div class="form-grouph"><label for="quantity" class="control-label"><br></label><input type="text" name="supplies[quantity][]" class="form-control" placeholder="Quantity" required /></div><div class="form-grouph"><label for="price" class="control-label"><br></label><input type="text" name="supplies[price][]" class="form-control" placeholder="Price" required /></div>');  
           });
 
 

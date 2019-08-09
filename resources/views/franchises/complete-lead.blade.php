@@ -74,7 +74,7 @@
         <div id="supplies">
             <div class="form-grouph">
                 <label for="supplies_sold" >Supplies Sold</label>
-                <select  name="supplies[sold][]" class="input-sales-select" required/>
+                <select  name="supplies[sold][]" class="input-sales-select" required>
                   <option value="">Choose from the supplies below</option>
                   <option value="supply">Test Supply</option>
                 </select>
@@ -102,6 +102,9 @@
                     </span>
                 @endif
             </div>
+            <br />
+            <input type="button" class="btn btn-primary" id="addSupply" value="Add More Supplies">
+            <br />
         </div>
         <div class="form-grouph textarea">
           <label for="job_notes" >Additional Job Notes</label>
@@ -116,7 +119,7 @@
           <input type="hidden" name="lead_id" required value="{{ $lead->lead_id }}" readonly />
           <input type="hidden" name="franchises" required value="{{ $user->id }}" readonly />
          <input type="submit" value="Submit">
-         <input type="button" class="btn btn-primary" id="addSupply"/ value="Add More Supplies">
+         
         </div>
       {!! Form::close() !!}
 </div>
