@@ -17,11 +17,11 @@
                 <form method="get" action="">
                     <div class="col-md-3">
                          <label>From:</label>
-                         <input type="date" name="start_from" class="form-control" />
+                         <input type="date" name="start_from" value="<?php echo $filterFrom; ?>" class="form-control" />
                     </div>
                     <div class="col-md-3">
                         <label>To:</label>
-                        <input type="date" name="start_end" class="form-control" />
+                        <input type="date" name="start_end" value="<?php echo $filterEnd; ?>" class="form-control" />
                     </div>
                      <div class="col-md-3">
                         <br />

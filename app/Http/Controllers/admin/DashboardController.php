@@ -60,10 +60,11 @@ class DashboardController extends Controller
             {
                 $file = fopen('php://output', 'w');
                 fputcsv($file, $columns);
-
+                $counter = 1;
                 foreach($leads as $leadall) {
                     $imageinvoice = $_SERVER['REMOTE_ADDR'].'/uploads/franchise/'.$leadall['invoice_image'];
-                    fputcsv($file, array($leadall['id'], $leadall['quote_name'],$leadall['dateofjob'],$leadall['employees_name'], $leadall['hours_worked'],$leadall['hourly_wage'],$leadall['paid_amount'],'no',$leadall['job_notes'],$imageinvoice,$leadall['supplies']));
+                    fputcsv($file, array($counter, $leadall['quote_name'],$leadall['dateofjob'],$leadall['employees_name'], $leadall['hours_worked'],$leadall['hourly_wage'],$leadall['paid_amount'],'no',$leadall['job_notes'],$imageinvoice,$leadall['supplies']));
+                    $counter++; 
                 }
                 fclose($file);
             };
@@ -93,14 +94,15 @@ class DashboardController extends Controller
             $columns = array('Id', 'Quote Name','Date of Job','Employees names', 'Hours worked', 'Hourly wage', 'How much the customers paid', 'If repeat customer or not', 'Additional job notes','Upload image of the invoice','Supplies sold');
 
 
-            $callback = function() use ($leads,$columns)
+           $callback = function() use ($leads,$columns)
             {
                 $file = fopen('php://output', 'w');
                 fputcsv($file, $columns);
-
+                $counter = 1;
                 foreach($leads as $leadall) {
                     $imageinvoice = $_SERVER['REMOTE_ADDR'].'/uploads/franchise/'.$leadall['invoice_image'];
-                    fputcsv($file, array($leadall['id'], $leadall['quote_name'],$leadall['dateofjob'],$leadall['employees_name'], $leadall['hours_worked'],$leadall['hourly_wage'],$leadall['paid_amount'],'no',$leadall['job_notes'],$imageinvoice,$leadall['supplies']));
+                    fputcsv($file, array($counter, $leadall['quote_name'],$leadall['dateofjob'],$leadall['employees_name'], $leadall['hours_worked'],$leadall['hourly_wage'],$leadall['paid_amount'],'no',$leadall['job_notes'],$imageinvoice,$leadall['supplies']));
+                    $counter++; 
                 }
                 fclose($file);
             };
@@ -133,10 +135,11 @@ class DashboardController extends Controller
             {
                 $file = fopen('php://output', 'w');
                 fputcsv($file, $columns);
-
+                $counter = 1;
                 foreach($leads as $leadall) {
                     $imageinvoice = $_SERVER['REMOTE_ADDR'].'/uploads/franchise/'.$leadall['invoice_image'];
-                    fputcsv($file, array($leadall['id'], $leadall['quote_name'],$leadall['dateofjob'],$leadall['employees_name'], $leadall['hours_worked'],$leadall['hourly_wage'],$leadall['paid_amount'],'no',$leadall['job_notes'],$imageinvoice,$leadall['supplies']));
+                    fputcsv($file, array($counter, $leadall['quote_name'],$leadall['dateofjob'],$leadall['employees_name'], $leadall['hours_worked'],$leadall['hourly_wage'],$leadall['paid_amount'],'no',$leadall['job_notes'],$imageinvoice,$leadall['supplies']));
+                    $counter++; 
                 }
                 fclose($file);
             };
@@ -170,10 +173,11 @@ class DashboardController extends Controller
             {
                 $file = fopen('php://output', 'w');
                 fputcsv($file, $columns);
-
+                $counter = 1;
                 foreach($leads as $leadall) {
                     $imageinvoice = $_SERVER['REMOTE_ADDR'].'/uploads/franchise/'.$leadall['invoice_image'];
-                    fputcsv($file, array($leadall['id'], $leadall['quote_name'],$leadall['dateofjob'],$leadall['employees_name'], $leadall['hours_worked'],$leadall['hourly_wage'],$leadall['paid_amount'],'no',$leadall['job_notes'],$imageinvoice,$leadall['supplies']));
+                    fputcsv($file, array($counter, $leadall['quote_name'],$leadall['dateofjob'],$leadall['employees_name'], $leadall['hours_worked'],$leadall['hourly_wage'],$leadall['paid_amount'],'no',$leadall['job_notes'],$imageinvoice,$leadall['supplies']));
+                    $counter++; 
                 }
                 fclose($file);
             };

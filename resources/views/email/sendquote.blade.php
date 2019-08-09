@@ -1,3 +1,5 @@
+@include('email.layouts.header')
+
 <div>
     Name : {{ $name }}<br />
     Email : {{ $email }}<br />
@@ -10,3 +12,5 @@
     Estimate: {{ $estimate }}<br />
     Additional Details: : {{ $additional_details }}<br />
 </div>
+
+@include('email.layouts.footer')
