@@ -122,7 +122,7 @@ class QuotesController extends Controller
                 fputcsv($file, $columns);
                 $counter = 1;
                 foreach($leads as $leadall) {
-                    $imageinvoice = $_SERVER['REMOTE_ADDR'].'/uploads/franchise/'.$leadall['invoice_image'];
+                    $imageinvoice = $_SERVER['HTTP_HOST'].'/uploads/franchise/'.$leadall['invoice_image'];
                     fputcsv($file, array($counter, $leadall['quote_name'],$leadall['dateofjob'],$leadall['employees_name'], $leadall['hours_worked'],$leadall['hourly_wage'],$leadall['paid_amount'],'no',$leadall['job_notes'],$imageinvoice,$leadall['supplies']));
                     $counter++; 
                 }
