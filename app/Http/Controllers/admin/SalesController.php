@@ -71,6 +71,7 @@ class SalesController extends Controller
 	        if($sales->save()){
 	        	if(!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'localhost'))){
 	        		$input['SERVER'] = $_SERVER['REMOTE_ADDR'];
+	        		$input['role'] = 'sales';
                     Mail::to($input['email'])->send(new RegisterUser($input));
                 }
 	        	return redirect('/admin/sales')->with('success', 'Sales has been added successfully.');
