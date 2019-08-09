@@ -6,6 +6,8 @@ use Auth;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RegisterUser;
 
 class FranchisesController extends Controller
 {
@@ -70,6 +72,10 @@ class FranchisesController extends Controller
 	        ]);
 
 	        if($franchises->save())
+	        	if(!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'localhost'))){
+	        		$input['SERVER'] = $_SERVER['REMOTE_ADDR'];
+                    Mail::to($input['email'])->send(new RegisterUser($input));
+                }
 	        	return redirect('/admin/franchises')->with('success', 'Franchises has been added successfully.');
 	        else 
 	        	return redirect('/admin/add-franchises')->with('error', 'Error saving Franchises.');

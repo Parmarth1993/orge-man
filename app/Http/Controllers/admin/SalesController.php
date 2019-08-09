@@ -6,6 +6,8 @@ use Auth;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RegisterUser;
 
 class SalesController extends Controller
 {
@@ -67,6 +69,10 @@ class SalesController extends Controller
 	        ]);
 
 	        if($sales->save())
+	        	if(!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'localhost'))){
+	        		$input['SERVER'] = $_SERVER['REMOTE_ADDR'];
+                    Mail::to($input['email'])->send(new RegisterUser($input));
+                }
 	        	return redirect('/admin/sales')->with('success', 'Sales has been added successfully.');
 	        else 
 	        	return redirect('/admin/add-sales')->with('error', 'Error saving sales.');
