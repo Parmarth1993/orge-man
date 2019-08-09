@@ -17,6 +17,10 @@ class ContactController extends Controller
 
     }
 
+    public function publicContactPage() {
+        return view('contact-public');        
+    }
+
     public function send(Request $request){
 
         

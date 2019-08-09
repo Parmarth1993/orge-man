@@ -64,5 +64,9 @@ class ProfileController extends Controller
          **/
         return back();
     }
+
+    public function changePassword() {
+        return view('profile');
+    }
 }
 ?>

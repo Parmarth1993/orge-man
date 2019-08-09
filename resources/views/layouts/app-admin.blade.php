@@ -91,11 +91,11 @@
                 Completed Leads
                 </a>
             </li>
-            <li>
+           <!--  <li>
                 <a href="{{ url('/admin/reports') }}">
                 Reports
                 </a>
-            </li>
+            </li> -->
             @endif
 
             @if (Auth::user()->role == 'sales')

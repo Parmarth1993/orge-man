@@ -53,7 +53,9 @@
                             @elseif (Auth::user()->role == 'customer')            
                                 <a href="{{ url('/get-quote') }}">Get Quote</a>
                             @endif
+                                <a href="{{ url('/contact') }}">Contact us</a>
                                 <a href="{{ url('/profile') }}">{{ Auth::user()->first_name }} Profile</a>
+                                <a href="{{ url('/change-password') }}">Change Password</a>
                                 <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Logout</a>

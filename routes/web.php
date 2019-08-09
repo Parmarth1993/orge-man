@@ -22,6 +22,7 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () { 	
 	Route::get('profile', 'ProfileController@index');
 	Route::patch('profile/{id}', 'ProfileController@update');
+	Route::get('change-password', 'ProfileController@changePassword');
 });
 
 /*
@@ -85,6 +86,7 @@ Route::group(array('prefix'=> 'sales', 'middleware' => ['auth']), function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/contact', 'ContactController@index')->name('Contact');
+Route::get('/contact-us', 'ContactController@publicContactPage')->name('Contact');
 Route::get('/get-quote', 'QuoteController@index');
 Route::post('get-quote/add', 'QuoteController@add');
 Route::post('contact/send', 'ContactController@send');

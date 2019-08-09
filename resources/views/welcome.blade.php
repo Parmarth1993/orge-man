@@ -59,7 +59,11 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
+                    @guest
+                        <a class="nav-link" href="/contact-us#contactForm">Contact</a>
+                    @else
+                        <a class="nav-link" href="/contact">Contact</a>
+                    @endguest
                 </li>
                 <li class="nav-item">
                     @guest
@@ -70,7 +74,7 @@
                 </li>
             </ul>
             
-            <span class="header-right-btn ml-2"><a class="btn btn-outline" data-toggle="modal" aria-pressed="false" data-target="#login-modal">Request a Quote</a></span>
+            <span class="header-right-btn ml-2"><a class="btn btn-outline"  href="#quoteForm">Request a Quote</a></span>
     
             <div class="top-header-grid text-md-right">
                 <span class="phone-grid"><i class="fa fa-phone mr-2"></i>888-788-9999</span>
@@ -195,7 +199,7 @@
 </div>
 
 
-<div class="request-quote-section py-md-5 py-4">
+<div class="request-quote-section py-md-5 py-4" id="quoteForm">
     <div class="full-width-container">
         <div class="row">
             <div class="col-md-8 col-lg-8 pr-md-5">
