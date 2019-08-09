@@ -45,7 +45,8 @@
           margin-left: 140px;
         }
         ul.nav.navbar-nav {
-            padding-top: 50px;
+            padding-top: 80px;
+            padding-left: 20px;
         }
         .panel{
             margin-top:20px;
