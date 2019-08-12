@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use Auth;
+use DB;
 use App\User;
 use App\Quote;
 use App\AssignedLeads;
@@ -30,11 +31,16 @@ class QuotesController extends Controller
     public function upcoming(Request $request) {
 
         $type = $request['type'];
+        $franchises = User::Where('role', 'franchises')->get();
+        $locations = DB::table('quotes')
+                     ->select('location')
+                     ->groupBy('location')
+                     ->get();
         $filterFranchises = ($request['filterFranchises']) ? $request['filterFranchises'] : '';
         $dateOfMove = ($request['date_of_job']) ? $request['date_of_job'] : '';
-        $franchises = User::Where('role', 'franchises')->get();
         $completionDate = ($request['completion_date']) ? $request['completion_date'] : '';
         $exportname = ($request['exportdata'] && $request['exportdata'] !='') ? $request['exportdata'] : '' ;
+        $filterLocation = ($request['filterLocation'] && $request['filterLocation'] !='') ? $request['filterLocation'] : '' ;
        
         if($type == 'upcoming')
             //get the list of assigned leads with lead/franchises details
@@ -92,6 +98,14 @@ class QuotesController extends Controller
                     ->select('assigned_leads.*', 'completed_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number','quotes.date_of_job as dateofjob', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'quotes.service_needed as service_needed' , 'quotes.estimate as estimate', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email', 'users.id as franchises_id', 'completed_leads.created_at as completion_date')
                     ->where('completed_leads.created_at', date('Y-m-d',strtotime($completionDate)))
                     ->get();
+            else if(isset($filterLocation) && $filterLocation !='')
+                $leads = AssignedLeads::join('quotes', 'assigned_leads.lead_id', '=', 'quotes.id')
+                    ->join('users', 'assigned_leads.franchises', '=', 'users.id')
+                    ->join('completed_leads', 'completed_leads.lead_id', '=', 'quotes.id')
+                    ->orderBy('assigned_leads.created_at')
+                    ->select('assigned_leads.*', 'completed_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number','quotes.date_of_job as dateofjob', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'quotes.service_needed as service_needed' , 'quotes.estimate as estimate', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email', 'users.id as franchises_id', 'completed_leads.created_at as completion_date')
+                    ->where('quotes.location',  $filterLocation)
+                    ->get();
             else
                 $leads = AssignedLeads::join('quotes', 'assigned_leads.lead_id', '=', 'quotes.id')
                 ->join('users', 'assigned_leads.franchises', '=', 'users.id')
@@ -131,7 +145,7 @@ class QuotesController extends Controller
 
             return response()->stream($callback, 200, $headers);
         } else {
-            return view('admin/leads', compact('leads', 'type', 'filterName', 'filterDate', 'franchises', 'filterFranchises' , 'dateOfMove', 'completionDate'));
+            return view('admin/leads', compact('leads', 'type', 'filterName', 'filterDate', 'franchises', 'filterFranchises' , 'dateOfMove', 'completionDate', 'filterLocation', 'locations'));
         }
 
     }
@@ -148,11 +162,6 @@ class QuotesController extends Controller
                 ->join('users', 'completed_leads.franchises', '=', 'users.id')
                 ->where('completed_leads.id', $id)->first();
         $supplies = json_decode($quote->supplies, true);
-        // echo "<pre>";
-        // echo sizeOf($supplies);
-        // print_r($supplies);
-        // echo "</pre>";
-        // die();
         return view('admin/view-quote-completed', compact('quote', 'supplies'));        
     }
 }

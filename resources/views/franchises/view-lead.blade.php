@@ -35,25 +35,25 @@
         <div class="form-grouph">
             <label for="invoice_image" >Upload Image Of Invoice</label>
             <span>
-              <img src="/uploads/franchise/{{ $lead->invoice_image }}" height="100" width="100" class="invoice_image" />
+              <img src="/uploads/franchise/{{ $lead->invoice_image }}" height="100" width="100" class="invoice_image" onerror="this.src = ''; this.src = 'https://via.placeholder.com/150.png?text=No%20Image'" />
             </span>
         </div> 
         <div class="form-grouph">
             <label for="job_images" >Upload Job Image</label>
             <span>
-              <img src="/uploads/franchise/{{ $lead->job_images }}" height="100" width="100" class="job_image" />
+              <img src="/uploads/franchise/{{ $lead->job_images }}" height="100" width="100" class="job_image" onerror="this.src = ''; this.src = 'https://via.placeholder.com/150.png?text=No%20Image'" />
             </span>
         </div>
-        <div class="form-grouph">
-            <label for="supplies_sold" >Supplies Sold</label>
-            <?php
-              $leaddata = json_decode($lead->supplies, true);  
-              for ($i = 0; $i < sizeof($leaddata['sold']); $i++) { ?>
-                <span>Supply: <?php echo $leaddata['sold'][$i];?></span>
-                <span>Quantity: <?php echo $leaddata['quantity'][$i];?></span>
-                <span>Price: <?php echo $leaddata['price'][$i];?></span>
-              <?php } ?> 
+        <div class="col-md-12 no-margin">
+          <label for="supplies_sold" >Supplies Sold</label>          
         </div>
+        @foreach($supplies as $key => $supply)
+          <div class="form-grouph">              
+                  <span>Name: {{ $supplies[$key]['name']}}</span><br>
+                  <span>Quantity: {{ $supplies[$key]['quantity']}}</span><br>
+                  <span>Price: {{ $supplies[$key]['price']}}</span><br>
+          </div>
+        @endforeach
         <div class="form-grouph textarea">
           <label for="job_notes" >Additional Job Notes</label>
           <span>{{ $lead->job_notes }}</span>

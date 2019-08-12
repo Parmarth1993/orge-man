@@ -71,8 +71,68 @@
                 </span>
             @endif
         </div>
-        <div id="supplies">
+        <!-- <div id="supplies"> -->
             <div class="form-grouph">
+                <label for="supplies_sold" >Supplies Sold</label>
+                <input type="text" name="supplies[tape][name]" class="form-control" placeholder="Quantity" value="Tape"   readonly />
+            </div>
+            <div class="form-grouph">
+                <label for="quantity" >Quantity</label>
+                <input type="text" name="supplies[tape][quantity]" class="form-control" placeholder="Quantity"   />
+            </div>
+            <div class="form-grouph">
+                <label for="price" >Price</label>
+                <input type="text" name="supplies[tape][price]" class="form-control" placeholder="Price"   />
+            </div>
+            <div class="form-grouph">
+                <label for="supplies_sold" >Supplies Sold</label>
+                <input type="text" name="supplies[plastic_wrap][name]" class="form-control" placeholder="Quantity" value="Plastic wrap"   readonly />
+            </div>
+            <div class="form-grouph">
+                <label for="quantity" >Quantity</label>
+                <input type="text" name="supplies[plastic_wrap][quantity]" class="form-control" placeholder="Quantity"   />
+            </div>
+            <div class="form-grouph">
+                <label for="price" >Price</label>
+                <input type="text" name="supplies[plastic_wrap][price]" class="form-control" placeholder="Price"   />
+            </div>
+            <div class="form-grouph">
+                <label for="supplies_sold" >Supplies Sold</label>
+                <input type="text" name="supplies[boxes][name]" class="form-control" placeholder="Quantity" value="Boxes"   readonly />
+            </div>
+            <div class="form-grouph">
+                <label for="quantity" >Quantity</label>
+                <input type="text" name="supplies[boxes][quantity]" class="form-control" placeholder="Quantity"   />
+            </div>
+            <div class="form-grouph">
+                <label for="price" >Price</label>
+                <input type="text" name="supplies[boxes][price]" class="form-control" placeholder="Price"   />
+            </div>
+            <div class="form-grouph">
+                <label for="supplies_sold" >Supplies Sold</label>
+                <input type="text" name="supplies[blanket][name]" class="form-control" placeholder="Blanket" value="Blanket"   readonly />
+            </div>
+            <div class="form-grouph">
+                <label for="quantity" >Quantity</label>
+                <input type="text" name="supplies[blanket][quantity]" class="form-control" placeholder="Quantity"   />
+            </div>
+            <div class="form-grouph">
+                <label for="price" >Price</label>
+                <input type="text" name="supplies[blanket][price]" class="form-control" placeholder="Price"   />
+            </div>
+            <div class="form-grouph">
+                <label for="supplies_sold" >Supplies Sold</label>
+                <input type="text" name="supplies[ropes][name]" class="form-control" placeholder="Ropes" value="Ropes"   readonly />
+            </div>
+            <div class="form-grouph">
+                <label for="quantity" >Quantity</label>
+                <input type="text" name="supplies[ropes][quantity]" class="form-control" placeholder="Quantity"   />
+            </div>
+            <div class="form-grouph">
+                <label for="price" >Price</label>
+                <input type="text" name="supplies[ropes][price]" class="form-control" placeholder="Price"   />
+            </div>
+            <!-- <div class="form-grouph">
                 <label for="supplies_sold" >Supplies Sold</label>
                 <select  name="supplies[sold][]" class="input-sales-select" required>
                   <option value="">Choose from the supplies below</option>
@@ -101,11 +161,11 @@
                         <strong>{{ $errors->first('price') }}</strong>
                     </span>
                 @endif
-            </div>
-            <br />
+            </div> -->
+            <!-- <br />
             <input type="button" class="btn btn-primary" id="addSupply" value="Add More Supplies">
-            <br />
-        </div>
+            <br /> -->
+        <!-- </div> -->
         <div class="form-grouph textarea">
           <label for="job_notes" >Additional Job Notes</label>
           <textarea name="job_notes" class="form-control" placeholder="Additional Job Notes" /></textarea>

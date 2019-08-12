@@ -161,8 +161,16 @@ class DashboardController extends Controller
                 ->where('completed_leads.lead_id', '=', $id)
                 ->where('completed_leads.franchises', '=', $user->id)
                 ->first();
-
-        return view('franchises/view-lead', compact('lead'));
+        $supplies = json_decode($lead->supplies, true);  
+        // print_r($supplies);
+        // foreach ($supplies as $key => $supply) {
+        //     // echo $key . "<br>";
+        //     echo "<pre>";
+        //     print_r($supplies[$key]['name']);
+        //     echo "</pre>";
+        // }
+        // die();
+        return view('franchises/view-lead', compact('lead', 'supplies'));
     }
 
 }

@@ -23,6 +23,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('profile', 'ProfileController@index');
 	Route::patch('profile/{id}', 'ProfileController@update');
 	Route::get('change-password', 'ProfileController@changePassword');
+	Route::post('change-password', 'ProfileController@changePassword');
 });
 
 /*

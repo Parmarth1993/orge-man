@@ -98,37 +98,6 @@
             </li> -->
             @endif
 
-            @if (Auth::user()->role == 'sales')
-                <li>
-                    <a href="{{ url('/sales/leads/new') }}">
-                    New Entries
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url('/sales/leads/pending') }}">
-                    Pending Entries
-                    </a>
-                </li>
-            @endif
-
-            @if (Auth::user()->role == 'franchises')
-                <li>
-                    <a href="{{ url('/franchises/leads/new') }}">
-                    New Orders
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url('/franchises/leads/upcoming') }}">
-                    Upcoming Orders
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url('/franchises/leads/completed') }}">
-                    Completed Order
-                    </a>
-                </li>
-            @endif
-
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                     Hi, {{ Auth::user()->first_name }} <span class="caret"></span>
@@ -139,6 +108,9 @@
                         <a href="{{ url('/profile') }}">
                             My Profile
                         </a>
+                        <!-- <a href="{{ url('/change-password') }}">
+                            Change Password
+                        </a> -->
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
