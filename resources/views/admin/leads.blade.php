@@ -20,7 +20,7 @@
                 @endif
                 <div class="col-md-3">
                   <label>Choose Franchises</label>
-                  <select class="form-control" name="filterFranchises" onchange="return window.location.href = '/admin/quotes/{{ $type }}?filterFranchises=' + this.value + '&date_of_job={{ $dateOfMove }}&location={{ $filterLocation }}'">
+                  <select class="form-control" name="filterFranchises" onchange="return window.location.href = '/admin/quotes/{{ $type }}?filterFranchises=' + this.value + '&date_of_job={{ $dateOfMove }}&filterLocation={{ $filterLocation }}'">
                     <option value="">Select Franchises</option>
                     @foreach($franchises as $franchisee)
                       <option value="{{ $franchisee->id }}" <?php if($filterFranchises == $franchisee->id) { echo 'selected="selected"'; } ?>>{{ $franchisee->first_name }} {{ $franchisee->last_name }}</option>
@@ -29,12 +29,12 @@
                 </div>
                 <div class="col-md-2">
                   <label>Date Of Move</label>
-                  <input type="date" name="date_of_job" placeholder="Date of Move" class="form-control" onchange="return window.location.href = '/admin/quotes/{{ $type }}?date_of_job=' + this.value + '&filterFranchises={{ $filterFranchises }}&location={{ $filterLocation }}' " value="{{ $dateOfMove }}">
+                  <input type="date" name="date_of_job" placeholder="Date of Move" class="form-control" onchange="return window.location.href = '/admin/quotes/{{ $type }}?date_of_job=' + this.value + '&filterFranchises={{ $filterFranchises }}&filterLocation={{ $filterLocation }}' " value="{{ $dateOfMove }}">
                 </div>
                 @if ($type == 'completed')
                   <div class="col-md-2">
                     <label>Completion Date </label>
-                    <input type="date" name="completion_date" placeholder="Date of Move" class="form-control" onchange="return window.location.href = '/admin/quotes/{{ $type }}?completion_date=' + this.value + '&filterFranchises={{ $filterFranchises }}&date_of_job={{ $dateOfMove }}&location={{ $filterLocation }}" value="{{ $completionDate }}">
+                    <input type="date" name="completion_date" placeholder="Date of Move" class="form-control" onchange="return window.location.href = '/admin/quotes/{{ $type }}?completion_date=' + this.value + '&filterFranchises={{ $filterFranchises }}&date_of_job={{ $dateOfMove }}&filterLocation={{ $filterLocation }}' " value="{{ $completionDate }}">
                   </div>
                   <div class="col-md-3">
                     <label>Choose Location </label>
@@ -95,6 +95,7 @@
                             <input type="hidden" name="exportdata" value="csv">
                             <input type="hidden" name="date_of_job" value="{{ $dateOfMove }}" />
                             <input type="hidden" name="completion_date" value="{{ $completionDate }}" />
+                            <input type="hidden" name="filterLocation" value="{{ $filterLocation }}" />
                             <input type="hidden" name="filterFranchises" value="{{ $filterFranchises }}" />
                            <input type="submit" class="btn btn-default" name="export" value="Export" />
                          </form>

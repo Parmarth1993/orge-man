@@ -74,7 +74,52 @@ class QuotesController extends Controller
                         })
                     ->get();
         else if($type == 'completed')
-            if(isset($dateOfMove) && $dateOfMove !='')
+
+           if(isset($filterLocation) && $filterLocation !='' && isset($filterFranchises) && $filterFranchises !='' && isset($dateOfMove) && $dateOfMove !='' && isset($completionDate) && $completionDate !='' )
+                $leads = AssignedLeads::join('quotes', 'assigned_leads.lead_id', '=', 'quotes.id')
+                    ->join('users', 'assigned_leads.franchises', '=', 'users.id')
+                    ->join('completed_leads', 'completed_leads.lead_id', '=', 'quotes.id')
+                    ->orderBy('assigned_leads.created_at')
+                    ->select('assigned_leads.*', 'completed_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number','quotes.date_of_job as dateofjob', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'quotes.service_needed as service_needed' , 'quotes.estimate as estimate', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email', 'users.id as franchises_id', 'completed_leads.created_at as completion_date')
+                    ->where('quotes.location',  $filterLocation)
+                    ->where('quotes.date_of_job', $dateOfMove)
+                    ->where('assigned_leads.franchises', $filterFranchises)
+                    ->where('completed_leads.created_at', date('Y-m-d',strtotime($completionDate)))
+                    ->get();
+
+             else if(isset($filterLocation) && $filterLocation !='' && isset($filterFranchises) && $filterFranchises !='' && isset($dateOfMove) && $dateOfMove !='' )
+                $leads = AssignedLeads::join('quotes', 'assigned_leads.lead_id', '=', 'quotes.id')
+                    ->join('users', 'assigned_leads.franchises', '=', 'users.id')
+                    ->join('completed_leads', 'completed_leads.lead_id', '=', 'quotes.id')
+                    ->orderBy('assigned_leads.created_at')
+                    ->select('assigned_leads.*', 'completed_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number','quotes.date_of_job as dateofjob', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'quotes.service_needed as service_needed' , 'quotes.estimate as estimate', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email', 'users.id as franchises_id', 'completed_leads.created_at as completion_date')
+                    ->where('quotes.location',  $filterLocation)
+                    ->where('quotes.date_of_job', $dateOfMove)
+                    ->where('assigned_leads.franchises', $filterFranchises)
+                    ->get();
+
+             else if(isset($filterLocation) && $filterLocation !='' && isset($filterFranchises) && $filterFranchises !='' && isset($completionDate) && $completionDate !='' )
+                $leads = AssignedLeads::join('quotes', 'assigned_leads.lead_id', '=', 'quotes.id')
+                    ->join('users', 'assigned_leads.franchises', '=', 'users.id')
+                    ->join('completed_leads', 'completed_leads.lead_id', '=', 'quotes.id')
+                    ->orderBy('assigned_leads.created_at')
+                    ->select('assigned_leads.*', 'completed_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number','quotes.date_of_job as dateofjob', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'quotes.service_needed as service_needed' , 'quotes.estimate as estimate', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email', 'users.id as franchises_id', 'completed_leads.created_at as completion_date')
+                    ->where('quotes.location',  $filterLocation)
+                    ->where('assigned_leads.franchises', $filterFranchises)
+                    ->where('completed_leads.created_at', date('Y-m-d',strtotime($completionDate)))
+                    ->get();   
+
+            else if(isset($filterLocation) && $filterLocation !='' && isset($filterFranchises) && $filterFranchises !='')
+                $leads = AssignedLeads::join('quotes', 'assigned_leads.lead_id', '=', 'quotes.id')
+                    ->join('users', 'assigned_leads.franchises', '=', 'users.id')
+                    ->join('completed_leads', 'completed_leads.lead_id', '=', 'quotes.id')
+                    ->orderBy('assigned_leads.created_at')
+                    ->select('assigned_leads.*', 'completed_leads.*', 'quotes.name as quote_name', 'quotes.email as quote_email', 'quotes.phone_number as quote_phone_number','quotes.date_of_job as dateofjob', 'quotes.delivery_address as quote_delivery_address', 'quotes.departure_address as quote_departure_address', 'quotes.service_needed as service_needed' , 'quotes.estimate as estimate', 'users.first_name as franchises_first_name', 'users.last_name as franchises_last_name', 'users.email as franchises_email', 'users.id as franchises_id', 'completed_leads.created_at as completion_date')
+                    ->where('quotes.location',  $filterLocation)
+                    ->where('assigned_leads.franchises', $filterFranchises)
+                    ->get();               
+
+            else if(isset($dateOfMove) && $dateOfMove !='')
                 $leads = AssignedLeads::join('quotes', 'assigned_leads.lead_id', '=', 'quotes.id')
                 ->join('users', 'assigned_leads.franchises', '=', 'users.id')
                 ->join('completed_leads', 'completed_leads.lead_id', '=', 'assigned_leads.lead_id')
@@ -135,12 +180,27 @@ class QuotesController extends Controller
                 $file = fopen('php://output', 'w');
                 fputcsv($file, $columns);
                 $counter = 1;
+                $totalhourspayment = 0;
+                $totalsupplyprice = 0;
+                $totalcustomerpaid = 0;
                 foreach($leads as $leadall) {
                     $imageinvoice = $_SERVER['HTTP_HOST'].'/uploads/franchise/'.$leadall['invoice_image'];
                     fputcsv($file, array($counter, $leadall['quote_name'],$leadall['dateofjob'],$leadall['employees_name'], $leadall['hours_worked'],$leadall['hourly_wage'],$leadall['paid_amount'],'no',$leadall['job_notes'],$imageinvoice,$leadall['supplies']));
+                    $totalhourspayment = $totalhourspayment + ( $leadall['hours_worked'] * $leadall['hourly_wage']);
+                    $suppliesdata = json_decode($leadall['supplies'], true);
+                    foreach ($suppliesdata as $key => $value) {
+                        # code...
+                         $totalsupplyprice = intval($totalsupplyprice) + intval($suppliesdata[$key]['price']);
+                    }
+                    $totalcustomerpaid = $totalcustomerpaid + $leadall['paid_amount'];
                     $counter++; 
                 }
-                fclose($file);
+             $columns = array('Id', 'Total Wages','Total Supply Price','How much the customers paid');
+             $file = fopen('php://output', 'w');
+             fputcsv($file, $columns);
+             fputcsv($file, array('1', $totalhourspayment,$totalsupplyprice,$totalcustomerpaid));
+              
+             fclose($file);
             };
 
             return response()->stream($callback, 200, $headers);
