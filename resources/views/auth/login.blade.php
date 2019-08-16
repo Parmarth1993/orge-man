@@ -1,4 +1,4 @@
-@extends('layouts.app-header-public')
+@extends('layouts.app-header-public-login')
 
 @section('content')
 
