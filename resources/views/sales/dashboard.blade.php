@@ -17,7 +17,7 @@
           {{ session()->get('error') }}  
         </div><br />
     @endif
-    <a href="{{ url('/sales/lead/create') }}"> <button class="btn btn-default">New Lead Entry</button> </a>
+    <a href="{{ url('/sales/lead/create') }}"> <button class="btn btn-default">New Client Entry</button> </a>
     <div class="frenchise_order-details">
         <div id="accordion">
             @foreach($leads as $key => $lead)

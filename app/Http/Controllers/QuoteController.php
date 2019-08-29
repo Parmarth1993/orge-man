@@ -51,7 +51,7 @@ class QuoteController extends Controller
         ]);
  
 
-        $input = $request->only('name','email','phone_number','date_of_job','delivery_address','departure_address','service_needed','formtype','location','estimate','additional_details');
+        $input = $request->only('name','email','phone_number','date_of_job','delivery_address','departure_address','service_needed','formtype','location','estimate','additional_details', 'alternate_phone');
 
         //echo "<pre>";print_r($input);die;
         $quote = new Quote([
@@ -63,6 +63,7 @@ class QuoteController extends Controller
             'departure_address' => $input['departure_address'],
             'service_needed' => $input['service_needed'],
             'location' => $input['location'],
+            'alternate_phone' => $input['alternate_phone'],
             'estimate' => $input['estimate'],
             'additional_details' => $input['additional_details'],
         ]);

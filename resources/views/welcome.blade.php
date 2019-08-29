@@ -126,19 +126,19 @@
                         <div class="col-md-4 pr-md-1">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input class="form-control" type="text" placeholder="" name="name" required="">
+                                <input class="form-control" type="text" placeholder="Name" name="name" required="">
                             </div>
                         </div>
                         <div class="col-md-4 px-md-1">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" type="email" placeholder="" name="email" required="">
+                                <input class="form-control" type="email" placeholder="Email" name="email" required="">
                             </div>
                         </div>
                         <div class="col-md-4 pl-md-1">
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input class="form-control" type="tel" placeholder="" name="phone_number" required="">
+                                <input class="form-control" type="tel" placeholder="Phone" name="phone_number" required="">
                             </div>
                         </div>
                     </div>
@@ -164,25 +164,66 @@
                         </div>
                     </div>
 
+                    
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadio"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Residential</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadio2"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Furniture Delivery</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadio3"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Commercial</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadio4"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Labor Services</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadio5"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Junk Removal</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadio6"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Pack & Load Service</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadio7"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Packing Supplies</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadio8"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Storage Facilities</label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-4 pr-md-1">
-                          <div class="form-group">
-                            <label for="date_of_job" >Service Needed</label>
-                                <select name="service_needed" class="form-control" required  />
-                                    <option value="choose_all_that_apply">CHOOSE ALL THAT APPLY</option>
-                                </select>
-                          </div>
-                         </div> 
-                        <div class="col-md-4 px-md-1">
                             <div class="form-group">
                                <label for="location" >Select Location</label>
                                <input type="text" name="location" placeholder="Please select location" class="form-control" required value="" />
                             </div>
                         </div>
-                        <div class="col-md-4 pl-md-1">
+                        <div class="col-md-4 px-md-1">
                             <div class="form-group">
                                  <label for="estimate" >Estimate Needed</label>
                                  <input type="text" name="estimate" placeholder="Please select estimate" class="form-control" required value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 px-md-1">
+                            <div class="form-group">
+                                 <label for="alternate_phone" >Alternate Phone</label>
+                                 <input type="text" name="alternate_phone" placeholder="Please select estimate" class="form-control" required value="" />
                             </div>
                         </div>
                     </div>
@@ -373,19 +414,19 @@
                         <div class="col-md-4 pr-md-1">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input class="form-control" type="text" placeholder="" name="name" required="">
+                                <input class="form-control" type="text" placeholder="Name" name="name" required="">
                             </div>
                         </div>
                         <div class="col-md-4 px-md-1">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" type="email" placeholder="" name="email" required="">
+                                <input class="form-control" type="email" placeholder="Email" name="email" required="">
                             </div>
                         </div>
                         <div class="col-md-4 pl-md-1">
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input class="form-control" type="tel" placeholder="" name="phone_number" required="">
+                                <input class="form-control" type="tel" placeholder="Phone" name="phone_number" required="">
                             </div>
                         </div>
                     </div>
@@ -411,25 +452,65 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadioa"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Residential</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadiob"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Furniture Delivery</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadioc"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Commercial</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadiod"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Labor Services</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadioe"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Junk Removal</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadiof"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Pack & Load Service</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadiog"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Packing Supplies</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="customRadioh"  name="service_needed" value="Residential">
+                                <label class="custom-control-label" for="customRadio">Storage Facilities</label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-4 pr-md-1">
-                          <div class="form-group">
-                            <label for="date_of_job" >Service Needed</label>
-                                <select name="service_needed" class="form-control" required  />
-                                    <option value="choose_all_that_apply">CHOOSE ALL THAT APPLY</option>
-                                </select>
-                          </div>
-                         </div> 
-                        <div class="col-md-4 px-md-1">
                             <div class="form-group">
                                <label for="location" >Select Location</label>
                                <input type="text" name="location" placeholder="Please select location" class="form-control" required value="" />
                             </div>
                         </div>
-                        <div class="col-md-4 pl-md-1">
+                        <div class="col-md-4 px-md-1">
                             <div class="form-group">
                                  <label for="estimate" >Estimate Needed</label>
                                  <input type="text" name="estimate" placeholder="Please select estimate" class="form-control" required value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 px-md-1">
+                            <div class="form-group">
+                                 <label for="alternate_phone" >Alternate Phone</label>
+                                 <input type="text" name="alternate_phone" placeholder="Please select estimate" class="form-control" required value="" />
                             </div>
                         </div>
                     </div>
@@ -521,12 +602,12 @@
                 <form action="#" method="post" class="p-sm-3">
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Username</label>
-                        <input type="text" class="form-control" placeholder="" name=" name" id="recipient-rname"
+                        <input type="text" class="form-control" placeholder="" name="name" id="recipient-rname"
                             required="">
                     </div>
                     <div class="form-group">
                         <label for="recipient-email" class="col-form-label">Email</label>
-                        <input type="email" class="form-control" placeholder="" name="Email" id="recipient-email"
+                        <input type="email" class="form-control" placeholder="Email" name="Email" id="recipient-email"
                             required="">
                     </div>
                     <div class="form-group">

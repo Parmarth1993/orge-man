@@ -39,6 +39,15 @@
                 @endif
         </div>
         <div class="form-grouph">
+            <label for="alternate_phone" >Alternate Phone</label>
+                <input type="text" name="alternate_phone" placeholder="Please enter your phone number" class="form-control" required value="" />
+                @if ($errors->has('alternate_phone'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('alternate_phone') }}</strong>
+                    </span>
+                @endif
+        </div>
+        <div class="form-grouph">
             <label for="date_of_job" >Date of Job</label>
                 <input type="date" name="date_of_job" class="form-control" required value="" />
                 @if ($errors->has('date_of_job'))

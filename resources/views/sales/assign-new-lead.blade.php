@@ -3,7 +3,7 @@
 @section('content')
 <h2>Sales Dashboard</h2>
 <div class="sales_input-details">
-    <h2>New Lead Entry</h2>
+    <h2>New Client Entry</h2>
     @if(session()->get('success'))
         <div class="alert alert-success">
             {{ session()->get('success') }}  
@@ -44,6 +44,15 @@
                 @endif
         </div>
         <div class="form-grouph">
+            <label for="alternate_phone" >Alternate Phone</label>
+                <input type="text" name="alternate_phone" placeholder="Please enter your phone number" class="form-control" required value="" />
+                @if ($errors->has('alternate_phone'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('alternate_phone') }}</strong>
+                    </span>
+                @endif
+        </div>
+        <div class="form-grouph">
             <label for="date_of_job" >Date of Job</label>
                 <input type="date" name="date_of_job" class="form-control" required value="" />
                 @if ($errors->has('date_of_job'))
@@ -67,7 +76,11 @@
         </div>
         <div class="form-grouph">
             <label for="service_needed" >Service Needed</label>
-                 <select name="service_needed" class="form-control" required  />
+                 <select name="service_needed" class="form-control" required  multiple />
+                    <option value="choose_all_that_apply">CHOOSE ALL THAT APPLY</option>
+                    <option value="choose_all_that_apply">CHOOSE ALL THAT APPLY</option>
+                    <option value="choose_all_that_apply">CHOOSE ALL THAT APPLY</option>
+                    <option value="choose_all_that_apply">CHOOSE ALL THAT APPLY</option>
                     <option value="choose_all_that_apply">CHOOSE ALL THAT APPLY</option>
                 </select>
                 @if ($errors->has('service_needed'))

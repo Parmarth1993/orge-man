@@ -20,8 +20,9 @@
                        <div class="body_wrapper-cntnt" id="printidshow{{ $key }}"> 
                           <div class="left-collapce-sec">
                              <h4>{{ $lead->quote_name }}</h4>
+                             <span>Name: <span>{{ $lead->quote_name }}</span></span>
                              <span>Phone No: <a href="tel:{{ $lead->quote_phone_number }}">{{ $lead->quote_phone_number }}</a></span>
-                             <span>Email: <a href="mailto: {{ $lead->quote_email }}"> {{ $lead->quote_email }}</a></span>
+                             <span>Alternate Phone No: <a href="tel:{{ $lead->quote_alternate_phone }}">{{ $lead->quote_alternate_phone }}</a></span>
                              <span>Date of Move: <span>{{ $lead->dateofjob }}</span></span>
                              <span>Assigned Franchisee: <span>{{ $lead->franchises_first_name }} {{ $lead->franchises_last_name }} </span></span>
                              <span>Franchisee Email: <span>{{ $lead->franchises_email }}</span></span>
@@ -33,6 +34,10 @@
                              <span>
                              <span>Help Needed: </span>
                              {{ $lead->estimate }}
+                             </span>
+                             <span>
+                               <span>Address: </span>
+                               {{ $lead->quote_departure_address }}
                              </span>
                           </div>
                        </div>
