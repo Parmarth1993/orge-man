@@ -1,12 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-<h2>Sales Dashboard</h2>
+	<div class="row no-margin">
+		<div class="col-md-6 pl-md-5">
+			<h2 class="pl-2">Sales Dashboard</h2>
+		</div>
+		<div class="col-md-6 text-right">
+			<a class="body_wrapper-btns" href="{{ url('/sales/lead/create') }}"> <button class="btn btn-default">New Lead Entry</button> </a>
+		</div>
+		<div class="clearfix"></div>		   
+    </div>
     <form method="GET">
       <div class="search_value-frenchisee">
-          <input type="text" id="search-name" name="name" placeholder="search by name" value="{{ $filterName }}">
-          <input type="date" id="search-date" name="date" placeholder="search by date" value="{{ $filterDate }}">
-          <input type="button" value="Clear Filter" id="clear-filter">
+          <div class="row">
+			<div class="col-md-4">
+				<input type="text" id="search-name" name="name" placeholder="search by name" value="{{ $filterName }}">
+			</div>
+			<div class="col-md-4">
+				<input type="date" id="search-date" name="date" placeholder="search by date" value="{{ $filterDate }}">
+			</div>
+			<div class="col-md-4">
+				<input type="button" value="Clear Filter" id="clear-filter">
+			</div>
+			<div class="clearfix"></div>
+		  </div>          
       </div>
     </form>
     @if(session()->get('success'))
@@ -18,15 +35,14 @@
         <div class="alert alert-danger">
           {{ session()->get('error') }}  
         </div><br />
-    @endif
-    <a class="body_wrapper-btns" href="{{ url('/sales/lead/create') }}"> <button class="btn btn-default">New Lead Entry</button> </a>
+    @endif    
     <div class="frenchise_order-details">
         <div id="accordion">
             @if ($type == 'completed')
                 @foreach($leads as $key => $lead)
                    <div class="card">
                       <div class="card-header">
-                         <div class="collapsible-card-headEr" data-toggle="collapse" href="#collapse{{ $key }}">
+                         <div class="collapsible-card-headEr sales-completed" data-toggle="collapse" href="#collapse{{ $key }}">
                             <a class="card-link" >
                             Order #{{ $lead->lead_id }} - {{ $lead->quote_name }} 
                             </a>
@@ -53,6 +69,9 @@
                                      <span>Help Needed: </span>
                                      {{ $lead->estimate }}
                                      </span>
+									 <span>
+										<img style="width:215px;float:right" alt="" src="{{ asset('images/completed.jpg') }}" />
+									 </span>
                                   </div>
                                </div>
                             </div>
@@ -64,7 +83,7 @@
                 @foreach($leads as $key => $lead)
                    <div class="card">
                       <div class="card-header">
-                         <div class="collapsible-card-headEr" data-toggle="collapse" href="#collapse{{ $key }}">
+                         <div class="collapsible-card-headEr sales-pending" data-toggle="collapse" href="#collapse{{ $key }}">
                             <a class="card-link" >
                             Order #{{ $lead->lead_id }} - {{ $lead->quote_name }} 
                             </a>
@@ -91,7 +110,10 @@
                                      <span>Help Needed: </span>
                                      {{ $lead->estimate }}
                                      </span>
-                                  </div>
+									 <span> 
+										<img style="width:215px;float:right" alt="" src="{{ asset('images/pending.jpg') }}" />
+									 </span>
+								  </div>
                                </div>
                             </div>
                          </div>

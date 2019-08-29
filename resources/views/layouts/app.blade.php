@@ -35,9 +35,9 @@
                         @else
                         <div class="ordered-products">
                             @if (Auth::user()->role == 'sales')
-                                <a href="{{ url('/sales/leads/new') }}">New Enteries</a>
-                                <a href="{{ url('/sales/leads/pending') }}">Pending Enteries</a>
-                                <a href="{{ url('/sales/leads/completed') }}">completed enteries</a>
+                                <a href="{{ url('/sales/leads/new') }}">New Entries</a>
+                                <a href="{{ url('/sales/leads/pending') }}">Pending Entries</a>
+                                <a href="{{ url('/sales/leads/completed') }}">Completed Entries</a>
                             @elseif (Auth::user()->role == 'franchises')
                                 <a href="{{ url('/franchises/leads/new') }}">New Orders</a>
                                 <a href="{{ url('/franchises/leads/upcoming') }}">Upcoming Orders</a>

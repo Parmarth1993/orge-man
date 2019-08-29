@@ -134,6 +134,10 @@ body{
 .main-frenchise-cntnt {
     width: 74%;
 }
+.main-frenchise-cntnt h2 {
+	font-size: 42px;
+}
+
 .ordered-products>a {
     display: block;
     color: #fff;
@@ -142,7 +146,7 @@ body{
     text-transform: uppercase;
     text-align: center;
     border: 1px solid #fff;
-    padding: 20px;
+    padding: 8px 20px;
     margin-bottom: 15px;
     text-decoration: none;
 }
@@ -171,7 +175,9 @@ body{
     padding: 0px 55px;
     margin-bottom: 25px;
 }
-.search_value-frenchisee>input {
+.search_value-frenchisee input[type="text"],
+.search_value-frenchisee input[type="date"],
+.search_value-frenchisee input[type="button"] {
     border: 1px solid #000;
     padding-left: 15px;
     height: 50px;
@@ -182,8 +188,8 @@ body{
     margin-right: 15px;
     min-width: 320px;
 }
-.search_value-frenchisee>input::placeholder {
-color: #000;
+.search_value-frenchisee input::placeholder {
+	color: #000;
 }
 input:focus{
     outline: none;
@@ -202,7 +208,7 @@ textarea:focus{
     margin-bottom: 15px;
 }
 .frenchise_order-details .card-header>.collapsible-card-headEr {
-    background-color: #3361d1;
+    background-color: #ccc;
     margin-left: -1px;
     margin-right: -1px;
     border-radius: 0px !important;
@@ -211,6 +217,21 @@ textarea:focus{
     padding-left: 80px;
     padding-right: 80px;
 }
+
+.frenchise_order-details .card-header>.collapsible-card-headEr.upcoming,
+.frenchise_order-details .card-header>.collapsible-card-headEr.sales-pending {
+	background-color: #c00;
+}
+
+.frenchise_order-details .card-header>.collapsible-card-headEr.completed,
+.frenchise_order-details .card-header>.collapsible-card-headEr.sales-completed {
+	background-color: #018301;
+}
+
+/*.completed {
+	
+}*/
+
 .frenchise_order-details .card-header{
     padding: 0px;
 }
@@ -318,6 +339,7 @@ padding-left: 5px;
         }
         .body_wrapper-btns {
             margin-top: 30px;
+			margin-right: -13px;
         }
         .ordered-products>a:hover{
             cursor: pointer;
@@ -370,7 +392,7 @@ padding-left: 5px;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            padding: 15px;
+            padding: 15px 40px;
         }
         form.sales-dashbard-form>div {
             margin: 0px 10px 20px 10px;
@@ -424,8 +446,12 @@ padding-left: 5px;
             height: 50px !important;
         }
         .col-md-12.no-margin {
-            margin-left: 0;
+            /*margin-left: 0;*/
             padding-left: 0;
         }
+
+		.no-margin {
+			margin:0px;
+		}
 
         /* End Sales-page*/   /* End Sales-page*/   /* End Sales-page*/   /* End Sales-page*/
