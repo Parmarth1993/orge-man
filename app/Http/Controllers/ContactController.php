@@ -52,6 +52,11 @@ class ContactController extends Controller
         return redirect('/contact')->with('success', 'Thank you for contacting us. We will revert back to you shortly.');
 
     }
+    
+    public function services()
+    {
+        return view('services');
+    }
 
 
 }

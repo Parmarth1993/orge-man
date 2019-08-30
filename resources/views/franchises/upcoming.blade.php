@@ -7,7 +7,7 @@
         @foreach($leads as $key => $lead)
            <div class="card">
               <div class="card-header">
-                 <div class="collapsible-card-headEr" data-toggle="collapse" href="#collapse{{ $key }}">
+                 <div class="collapsible-card-headEr upcoming" data-toggle="collapse" href="#collapse{{ $key }}">
                     <a class="card-link" >
                     Order #{{ $lead->lead_id }} - {{ $lead->quote_name }} 
                     </a>
@@ -39,6 +39,9 @@
                                <span>Address: </span>
                                {{ $lead->quote_departure_address }}
                              </span>
+            							 <span>
+            								<img style="width:215px;float:right" alt="" src="{{ asset('images/pending.jpg') }}" />
+            							 </span>
                           </div>
                        </div>
                        <div class="body_wrapper-btns">

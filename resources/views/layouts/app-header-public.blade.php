@@ -5,6 +5,7 @@
     <title>Orge Men Movers | Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="keywords" content="Orge Men Movers" />
     <script>
         addEventListener("load", function () {
@@ -17,27 +18,24 @@
     </script>
     <!-- Custom Theme files -->
     <link href="{{ asset('css/home/bootstrap.css') }}" type="text/css" rel="stylesheet" media="all">
-    <link href="{{ asset('css/home/lightslider.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home/slick.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home/style.css') }}" type="text/css" rel="stylesheet" media="all">
     <!-- font-awesome icons -->
     <link href="{{ asset('css/home/font-awesome.min.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- online-fonts -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i&display=swap&subset=latin-ext" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=latin-ext" rel="stylesheet">
 
-
 </head>
 
-<body id="home">
+<body id="page-top" class="home" data-spy="scroll" data-target=".navbar-fixed-top">
 
 <!-- header -->
 <header class="header-standard">
-
-    <nav class="navbar navbar-expand-lg fixed-top navbar-expand-lg navbar-light navbar-fixed-top">
-
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light navbar-fixed-top">
         <span class="logo-grid">
-        <a class="navbar-brand" href="">
+        <a class="navbar-brand" href="http://orgemoving.smallbizplace.com/">
             <img src="{{ asset('images/home/orge-man-movers-logo.png') }}" class="img-fluid" />
         </a></span>
         
@@ -51,8 +49,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/#services">Services</a>
+                <li class="nav-item child-menu">
+                    <a class="nav-link" href="/services">Services</a>
+					<ul class="menu-level1">
+						<li><a href="#">Residential</a></li>
+						<li><a href="#">Commercial</a></li>
+						<li><a href="#">Junk Removal</a></li>
+						<li><a href="#">Furniture Delivery</a></li>
+						<li><a href="#">Labor Services</a></li>
+						<li><a href="#">Pack & Load Services</a></li>
+					</ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Employment</a>
@@ -60,7 +66,7 @@
                 
                 <li class="nav-item">
                     @guest
-                        <a class="nav-link" href="/contact-us">Contact</a>
+                        <a class="nav-link" href="#contactForm">Contact</a>
                     @else
                         <a class="nav-link" href="/contact">Contact</a>
                     @endguest
@@ -77,14 +83,10 @@
             <span class="header-right-btn ml-2"><a class="btn btn-outline"  href="/#quoteForm">Request a Quote</a></span>
     
             <div class="top-header-grid text-md-right">
-                <span class="phone-grid"><i class="fa fa-phone mr-2"></i>888-788-9999</span>
+                <span class="phone-grid"><i class="fa fa-phone mr-2"></i><a href="tel:866-647-3626">(866) 647-3626</a></span>
             </div>
-
         </div>
-        
-        
     </nav>
-    
 </header>
 <!-- //header -->
  
@@ -93,8 +95,8 @@
 <!-- footer -->
 <footer class="footer-section">
     <div class="container">
-        <div class="row pt-5">
-            <div class="col-lg-3">
+        <div class="row pt-md-5 pt-4">
+            <div class="col-lg-3 col-md-6">
                 <h5>Helpful Links</h5>
                 <ul class="footer-link">
                     <li><a href="#">Commercial Moving</a></li>
@@ -105,7 +107,7 @@
                     <li><a href="#">Pack & Load Services</a></li>
                 </ul>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6">
                 <h5>Areas Served</h5>
                 <ul class="footer-link footer-area-link">
                     <li><a href="#">Texas</a></li>
@@ -118,22 +120,22 @@
                     <li><a href="#">North Carolina</a></li>
                 </ul>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6">
                 <h5>Contact Us</h5>
                 <ul class="footer-contact-details">
                     5671 Main Street<br/>
                     Austin, Texas 73546<br/><br/>
 
-                    Phone: <b>888-788-9999</b><br/>
+                    Phone: <b><a href="tel:866-647-3626">(866) 647-3626</a></b><br/>
                     Email Us: <a href="mailto:info@orgemanmoving.com">info@orgemanmoving.com</a>
                 </ul>
                 <h5 style="width:135px">&nbsp;</h5>
                 <ul class="footer-contact-details">
                     Sales Department<br/>
-                    <b>888-785-9898</b>
+                    <b><a href="tel:888-785-9898">(888) 785-9898</a></b>
                 </ul>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6">
                 <div class="widget-social">
                     <h5>Follow Us</h5>
                     <ul>
@@ -155,9 +157,14 @@
                     </ul>
                     <h5 class="mt-4">Follow Us</h5>
                     <div class="card-img">
-                        <img alt="" src="{{ asset('images/home/credit-cards.png') }}" />                        
+                        <a href="#"><img alt="" src="{{ asset('images/home/credit-cards.png') }}" /></a>		
                     </div>
-                    <div class="card-img help-img text-lg-right text-md-right text-center pt-4 pr-4">                       
+					<div class="card-sep-grid">
+						<span class=""><a href="#"><img alt="" src="{{ asset('images/home/cash-app-icon.png') }}" /></span></a>
+						<span class="mx-1"><a href="#"><img alt="" src="{{ asset('images/home/venmo_icon.png') }}" /></span></a>
+						<span class=""><a href="#"><img alt="" src="{{ asset('images/home/crypto-icon.png') }}" /></span></a>
+					</div>
+                    <div class="card-img help-img text-md-right text-center pt-3 pr-4">                       
                         <img alt="" src="{{ asset('images/home/lets-chat-img.png') }}" />
                     </div>
                 </div>
@@ -172,6 +179,7 @@
     </div>
 </footer>
 <!-- //footer -->
+
 <!-- js -->
 <script src="{{ asset('js/home/jquery-2.2.3.min.js') }}"></script>
 <!-- //js -->
@@ -201,16 +209,7 @@
 <!-- //Banner  Responsiveslides -->
 <!-- Scrolling Nav JavaScript -->
 <script src="{{ asset('js/home/scrolling-nav.js') }}"></script>
-<!-- <script src="js/counter.js"></script> -->
-<!-- portfolio -->
-<script src="{{ asset('js/home/jquery.picEyes.js') }}"></script>
-<script>
-    $(function () {
-        //picturesEyes($('.demo li'));
-        $('.demo li').picEyes();
-    });
-</script>
-<!-- //portfolio -->
+
 <!-- start-smooth-scrolling -->
 <script src="{{ asset('js/home/move-top.js') }}"></script>
 <script src="{{ asset('js/home/easing.js') }}"></script>
@@ -226,6 +225,7 @@
     });
 </script>
 <!-- //end-smooth-scrolling -->
+
 <!-- smooth-scrolling-of-move-up -->
 <script>
     $(document).ready(function () {
@@ -299,9 +299,9 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="{{ asset('js/home/bootstrap.js') }}"></script>
-<script src="{{ asset('js/home/slick.min.js') }}"></script>
 <script src="{{ asset('js/home/test-slider-fullwidth.js') }}"></script>
-</body>
+<script src="{{ asset('js/home/slick.min.js') }}"></script>
+<script src="{{ asset('js/home/bootstrap.js') }}"></script>
 
+</body>
 </html>
