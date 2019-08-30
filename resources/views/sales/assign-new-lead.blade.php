@@ -77,11 +77,14 @@
         <div class="form-grouph">
             <label for="service_needed" >Service Needed</label>
                  <select name="service_needed" class="form-control" required  multiple />
-                    <option value="choose_all_that_apply">CHOOSE ALL THAT APPLY</option>
-                    <option value="choose_all_that_apply">CHOOSE ALL THAT APPLY</option>
-                    <option value="choose_all_that_apply">CHOOSE ALL THAT APPLY</option>
-                    <option value="choose_all_that_apply">CHOOSE ALL THAT APPLY</option>
-                    <option value="choose_all_that_apply">CHOOSE ALL THAT APPLY</option>
+                    <option value="Residential">Residential</option>
+                    <option value="Commercial">Commercial</option>
+                    <option value="Junk Removal">Junk Removal</option>
+                    <option value="Furniture Delivery">Furniture Delivery</option>
+                    <option value="Labor Services">Labor Services</option>
+                    <option value="Labor Services">Pack & Load Service</option>
+                    <option value="Labor Services">Packing Supplies</option>
+                    <option value="Labor Services">Storage Services</option>
                 </select>
                 @if ($errors->has('service_needed'))
                     <span class="help-block">

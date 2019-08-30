@@ -91,3 +91,4 @@ Route::get('/contact-us', 'ContactController@publicContactPage')->name('Contact'
 Route::get('/get-quote', 'QuoteController@index');
 Route::post('get-quote/add', 'QuoteController@add');
 Route::post('contact/send', 'ContactController@send');
+Route::get('/services', 'ContactController@services');
