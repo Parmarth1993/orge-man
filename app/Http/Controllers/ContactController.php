@@ -46,7 +46,7 @@ class ContactController extends Controller
 
         $contact->save();
         if(!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'localhost'))){
-            Mail::to('parthibatman@gmail.com')->send(new ContactEmail($input));
+            Mail::to('brajeshjha108@gmail.com')->send(new ContactEmail($input));
         }
 
         return redirect('/contact')->with('success', 'Thank you for contacting us. We will revert back to you shortly.');

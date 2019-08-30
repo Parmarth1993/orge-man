@@ -110,7 +110,7 @@ class DashboardController extends Controller
 
             $salesdataid = User::Where('id', $salesdata['sales_id'])->first();
         
-            $emails = ['parthibatman@gmail.com', $salesdataid['email']];
+            $emails = ['brajeshjha108@gmail.com', $salesdataid['email']];
 
             $leaddata = Quote::Where('id', $input['lead_id'])->first();
 

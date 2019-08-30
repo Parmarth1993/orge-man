@@ -74,7 +74,7 @@ class QuoteController extends Controller
             echo json_encode(array('success' => 'true','message' => 'Quote Sent Successfully.'));
         }else{
           
-          $emails = ['parthibatman@gmail.com', 'randhirsinghpaul@gmail.com'];
+          $emails = ['brajeshjha108@gmail.com', 'testdj108@gmail.com'];
           if(!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'localhost'))){
              Mail::to($emails)->send(new SendQuote($input));
           }
